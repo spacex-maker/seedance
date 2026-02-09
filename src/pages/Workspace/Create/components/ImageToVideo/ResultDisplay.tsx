@@ -54,7 +54,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({
               ) : (
                 <FormattedMessage 
                   id="create.video.analyzing" 
-                  defaultMessage="正在分析图片和提示词，构建 3D 世界..." 
+                  defaultMessage="正在分析图片和提示词，AI正在创作中..." 
                 />
               )}
             </Text>

@@ -377,6 +377,39 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
       return;
     }
 
+    // 验证图片尺寸
+    try {
+      const imageUrl = URL.createObjectURL(file);
+      const img = new Image();
+      
+      await new Promise((resolve, reject) => {
+        img.onload = () => {
+          URL.revokeObjectURL(imageUrl);
+          const minHeight = 300;
+          if (img.height < minHeight) {
+            reject(new Error(intl.formatMessage({ 
+              id: 'create.i2v.imageSize.error', 
+              defaultMessage: '图片高度至少需要 {minHeight}px，当前图片尺寸为 {width}x{height}px' 
+            }, { 
+              minHeight, 
+              width: img.width, 
+              height: img.height 
+            })));
+          } else {
+            resolve(null);
+          }
+        };
+        img.onerror = () => {
+          URL.revokeObjectURL(imageUrl);
+          reject(new Error(intl.formatMessage({ id: 'create.i2v.fileRead.error', defaultMessage: '图片读取失败' })));
+        };
+        img.src = imageUrl;
+      });
+    } catch (error: any) {
+      message.error(error.message || intl.formatMessage({ id: 'create.i2v.fileRead.error', defaultMessage: '图片读取失败' }));
+      return;
+    }
+
     try {
       const url = await getBase64(file);
       setOriginalImageUrl(url);
