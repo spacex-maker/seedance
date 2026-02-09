@@ -297,15 +297,20 @@ export const StyledCard = styled(Card)<{ $seedancePage?: boolean }>`
 `;
 
 export const ResultArea = styled.div`
-  background: ${props => props.theme.mode === 'dark' ? '#1f1f1f' : '#f9f9f9'};
+  background: ${props => props.theme.mode === 'dark' 
+    ? 'rgba(255, 255, 255, 0.04)' 
+    : 'rgba(0, 0, 0, 0.02)'};
   border-radius: 12px;
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px dashed ${props => props.theme.mode === 'dark' ? '#444' : '#d9d9d9'};
+  border: 1px dashed ${props => props.theme.mode === 'dark' 
+    ? 'rgba(255, 255, 255, 0.1)' 
+    : 'rgba(0, 0, 0, 0.1)'};
   position: relative;
   min-height: 400px;
+  backdrop-filter: blur(10px);
 `;
 
 export const VideoPlaceholder = styled.div`
@@ -391,8 +396,12 @@ export const CustomUploadArea = styled.div<{ $isDark?: boolean; $isDragging?: bo
   width: 100%;
   height: 260px;
   border-radius: 12px;
-  border: 1px dashed ${props => props.$isDark ? '#444' : '#d9d9d9'};
-  background: ${props => props.$isDark ? '#1f1f1f' : '#fafafa'};
+  border: 1px dashed ${props => props.$isDark 
+    ? 'rgba(255, 255, 255, 0.1)' 
+    : 'rgba(0, 0, 0, 0.1)'};
+  background: ${props => props.$isDark 
+    ? 'rgba(255, 255, 255, 0.04)' 
+    : 'rgba(0, 0, 0, 0.02)'};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -400,14 +409,20 @@ export const CustomUploadArea = styled.div<{ $isDark?: boolean; $isDragging?: bo
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+  backdrop-filter: blur(10px);
   
   ${props => props.$isDragging && `
     border-color: #1890ff;
-    background: ${props.$isDark ? '#2a2a2a' : '#f0f7ff'};
+    background: ${props.$isDark 
+      ? 'rgba(24, 144, 255, 0.15)' 
+      : 'rgba(24, 144, 255, 0.08)'};
   `}
   
   &:hover {
     border-color: #1890ff;
+    background: ${props => props.$isDark 
+      ? 'rgba(255, 255, 255, 0.06)' 
+      : 'rgba(0, 0, 0, 0.04)'};
   }
   
   input[type="file"] {

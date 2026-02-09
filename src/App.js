@@ -22,6 +22,8 @@ import PrivacyPolicyPage from './pages/PrivacyPolicy';
 import TermsOfServicePage from './pages/TermsOfService';
 import RechargePage from './pages/Recharge';
 import RechargeAgreementPage from './pages/RechargeAgreement';
+import LoginPage from './pages/Login';
+import SignupPage from './pages/Signup';
 import zhCN from 'antd/locale/zh_CN';
 import enUS from 'antd/locale/en_US';
 import jaJP from 'antd/locale/ja_JP';
@@ -244,6 +246,9 @@ export default function App() {
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <Routes>
               <Route path="/" element={<SeedanceVideoPage />} />
+              {/* 认证页面 */}
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignupPage />} />
               {/* 账户设置 */}
               <Route path="/profile" element={
                 <PrivateRoute>
