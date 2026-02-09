@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    
+    <!-- 基础 SEO Meta 标签 -->
+    <title>Seedance - 前端应用</title>
+    <meta name="description" content="Seedance 前端应用" />
+    <meta name="keywords" content="Seedance" />
+    <meta name="author" content="Seedance Team" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
+    
+    <!-- 视口和移动端优化 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Seedance" />
+    <meta name="application-name" content="Seedance" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- 图标和 PWA -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.ico" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- 预连接优化 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- 字体 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 暗黑模式初始化 -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const isDark = savedTheme ? savedTheme === 'dark' : true;
+        
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <div style="padding: 20px; text-align: center; font-family: sans-serif;">
+        <h1>Seedance</h1>
+        <p>您需要启用 JavaScript 才能使用 Seedance 的全部功能。</p>
+      </div>
+    </noscript>
+    <div id="root"></div>
+  </body>
+</html>
