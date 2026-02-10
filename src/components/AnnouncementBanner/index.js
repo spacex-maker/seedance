@@ -69,7 +69,7 @@ const AnnouncementBanner = () => {
         type="info"
         icon={<BulbOutlined />}
         message="Seedance2 即将发布"
-        description="Seedance2 下月正式上线 —— 电影级 AI 图生视频，多镜头叙事、自动分镜运镜、音画同步，让创作更专业，敬请期待。"
+        description="Seedance2 预计 2026-02-24 18:00:00 后可支持开通 —— 电影级 AI 图生视频，多镜头叙事、自动分镜运镜、音画同步，让创作更专业，敬请期待。"
         closable
         onClose={handleClose}
         showIcon
