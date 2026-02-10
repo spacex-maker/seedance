@@ -486,6 +486,8 @@ export default {
   'create.duration.15s': '15초',
   'create.estimated.price': '예상: {price}',
   'create.model.select': '모델 선택',
+  'create.model.feedback': '문제 피드백',
+  'create.model.feedback.tooltip': '문제가 있으신가요? 클릭하여 피드백 제공',
   'create.model.loading': '모델 로딩 중...',
   'create.model.loadFailed': '모델 목록 로드 실패',
   'create.model.family.select': '모델 패밀리 선택',
@@ -1171,7 +1173,7 @@ export default {
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': '사양 비교 및 업계 인사이트가 포함된 글로벌 휴머노이드 로봇 데이터베이스',
   'footer.openRobotX.visit': 'Open Robot X 방문',
-  'footer.ai2obj.title': 'Seedance',
+  'footer.ai2obj.title': 'AI2Obj',
   'footer.ai2obj.description': 'AI 종합 생성 플랫폼, 비디오, 이미지, 3D 등 멀티모달 AI 창작 서비스 제공',
   
   // 가격 페이지

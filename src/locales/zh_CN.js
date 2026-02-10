@@ -555,6 +555,8 @@ export default {
   'create.duration.15s': '15s',
   'create.estimated.price': '预估: {price}',
   'create.model.select': '选择模型',
+  'create.model.feedback': '问题反馈',
+  'create.model.feedback.tooltip': '遇到问题？点击反馈',
   'create.model.select.image.placeholder': '请选择要使用的图片生成模型',
   'create.model.loading': '加载模型中...',
   'create.model.loadFailed': '加载模型列表失败',
@@ -1311,7 +1313,7 @@ export default {
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': '全球人形机器人数据库，参数对比与行业资讯',
   'footer.openRobotX.visit': '前往 Open Robot X',
-  'footer.ai2obj.title': 'Seedance',
+  'footer.ai2obj.title': 'AI2Obj',
   'footer.ai2obj.description': 'AI 综合生成平台，提供视频、图像、3D 等多模态 AI 创作服务',
   
   // 定价页面

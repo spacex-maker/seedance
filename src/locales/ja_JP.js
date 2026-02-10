@@ -506,6 +506,8 @@ export default {
   'create.duration.15s': '15秒',
   'create.estimated.price': '見積もり: {price}',
   'create.model.select': 'モデルを選択',
+  'create.model.feedback': '問題フィードバック',
+  'create.model.feedback.tooltip': '問題がありますか？クリックしてフィードバック',
   'create.model.loading': 'モデルを読み込み中...',
   'create.model.loadFailed': 'モデルリストの読み込みに失敗しました',
   'create.model.family.select': 'モデルファミリーを選択',
@@ -1191,7 +1193,7 @@ export default {
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': '仕様比較と業界インサイトを備えたグローバル人型ロボットデータベース',
   'footer.openRobotX.visit': 'Open Robot X を訪問',
-  'footer.ai2obj.title': 'Seedance',
+  'footer.ai2obj.title': 'AI2Obj',
   'footer.ai2obj.description': 'AI総合生成プラットフォーム、動画・画像・3Dなど多モーダルAI創作サービスを提供',
   
   // 価格設定ページ

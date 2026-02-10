@@ -28,8 +28,10 @@ import {
   UnorderedListOutlined,
   InboxOutlined,
   DeleteOutlined,
+  QuestionCircleOutlined,
 } from '@ant-design/icons';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { useNavigate } from 'react-router-dom';
 import instance from 'api/axios';
 import { VideoResult, Model, GenerationTask, GenerationTaskPageResponse } from './types';
 import { 
@@ -74,6 +76,7 @@ export interface ImageToVideoProps {
 
 const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => {
   const intl = useIntl();
+  const navigate = useNavigate();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [generatedVideo, setGeneratedVideo] = useState<VideoResult | null>(null);
@@ -1212,10 +1215,27 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
                 <Form.Item
                   name="modelId"
                   label={
-                    <Space>
-                      <RobotOutlined style={{ color: '#1890ff' }} />
-                      <FormattedMessage id="create.model.select" defaultMessage="选择模型" />
-                    </Space>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                      <Space>
+                        <RobotOutlined style={{ color: '#1890ff' }} />
+                        <FormattedMessage id="create.model.select" defaultMessage="选择模型" />
+                      </Space>
+                      <Tooltip title={intl.formatMessage({ id: 'create.model.feedback.tooltip', defaultMessage: '遇到问题？点击反馈' })}>
+                        <Button
+                          type="text"
+                          size="small"
+                          icon={<QuestionCircleOutlined />}
+                          onClick={() => navigate('/feedback')}
+                          style={{ 
+                            color: '#1890ff',
+                            padding: '0 4px',
+                            fontSize: 12
+                          }}
+                        >
+                          <FormattedMessage id="create.model.feedback" defaultMessage="问题反馈" />
+                        </Button>
+                      </Tooltip>
+                    </div>
                   }
                   style={{ marginBottom: 28 }}
                 >

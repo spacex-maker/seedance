@@ -487,6 +487,8 @@ export default {
   'create.duration.15s': '15s',
   'create.estimated.price': 'Geschätzt: {price}',
   'create.model.select': 'Modell auswählen',
+  'create.model.feedback': 'Feedback',
+  'create.model.feedback.tooltip': 'Probleme? Klicken Sie, um Feedback zu geben',
   'create.model.loading': 'Lade Modelle...',
   'create.model.loadFailed': 'Modellliste konnte nicht geladen werden',
   'create.model.family.select': 'Modellfamilie auswählen',
@@ -1117,7 +1119,7 @@ export default {
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': 'Globale Humanoid-Robotik-Datenbank mit Spezifikationsvergleich und Brancheneinblicken',
   'footer.openRobotX.visit': 'Open Robot X besuchen',
-  'footer.ai2obj.title': 'Seedance',
+  'footer.ai2obj.title': 'AI2Obj',
   'footer.ai2obj.description': 'Umfassende KI-Generierungsplattform, bietet multimodale KI-Erstellungsservices für Video, Bild, 3D und mehr',
   
   // Preisgestaltungsseite

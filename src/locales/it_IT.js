@@ -436,6 +436,8 @@ export default {
   'create.duration.15s': '15s',
   'create.estimated.price': 'Stimato: {price}',
   'create.model.select': 'Seleziona Modello',
+  'create.model.feedback': 'Feedback',
+  'create.model.feedback.tooltip': 'Hai problemi? Clicca per fornire feedback',
   'create.model.loading': 'Caricamento modelli...',
   'create.model.loadFailed': 'Impossibile caricare l\'elenco dei modelli',
   'create.model.family.select': 'Seleziona Famiglia di Modelli',
@@ -1066,7 +1068,7 @@ export default {
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': 'Database globale di robotica umanoide con confronto specifiche e approfondimenti del settore',
   'footer.openRobotX.visit': 'Visita Open Robot X',
-  'footer.ai2obj.title': 'Seedance',
+  'footer.ai2obj.title': 'AI2Obj',
   'footer.ai2obj.description': 'Piattaforma di generazione IA completa, offre servizi di creazione multimodale tra cui video, immagini, 3D e altro',
   
   // Pagina dei prezzi

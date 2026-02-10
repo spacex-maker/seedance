@@ -1062,7 +1062,7 @@ export default {
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': 'قاعدة بيانات عالمية للروبوتات البشرية مع مقارنة المواصفات ورؤى الصناعة',
   'footer.openRobotX.visit': 'زيارة Open Robot X',
-  'footer.ai2obj.title': 'Seedance',
+  'footer.ai2obj.title': 'AI2Obj',
   'footer.ai2obj.description': 'منصة شاملة للإنشاء بالذكاء الاصطناعي، تقدم خدمات إنشاء متعددة الوسائط تشمل الفيديو والصور وثلاثية الأبعاد والمزيد',
   
   // صفحة التسعير

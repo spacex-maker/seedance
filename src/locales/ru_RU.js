@@ -418,6 +418,8 @@ export default {
   'create.duration.15s': '15с',
   'create.estimated.price': 'Оценка: {price}',
   'create.model.select': 'Выбрать Модель',
+  'create.model.feedback': 'Обратная связь',
+  'create.model.feedback.tooltip': 'Есть проблемы? Нажмите, чтобы оставить отзыв',
   'create.model.loading': 'Загрузка моделей...',
   'create.model.loadFailed': 'Не удалось загрузить список моделей',
   'create.model.family.select': 'Выбрать Семейство Моделей',
@@ -1046,7 +1048,7 @@ export default {
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': 'Глобальная база данных гуманоидной робототехники с сравнением характеристик и отраслевыми аналитическими данными',
   'footer.openRobotX.visit': 'Посетить Open Robot X',
-  'footer.ai2obj.title': 'Seedance',
+  'footer.ai2obj.title': 'AI2Obj',
   'footer.ai2obj.description': 'Комплексная платформа генерации с помощью ИИ, предоставляет мультимодальные сервисы создания контента: видео, изображения, 3D и другое',
   
   // Страница цен
