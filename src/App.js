@@ -24,6 +24,7 @@ import RechargePage from './pages/Recharge';
 import RechargeAgreementPage from './pages/RechargeAgreement';
 import LoginPage from './pages/Login';
 import SignupPage from './pages/Signup';
+import GoogleCallback from './pages/GoogleCallback';
 import zhCN from 'antd/locale/zh_CN';
 import enUS from 'antd/locale/en_US';
 import jaJP from 'antd/locale/ja_JP';
@@ -249,6 +250,7 @@ export default function App() {
               {/* 认证页面 */}
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
+              <Route path="/auth/google/callback" element={<GoogleCallback />} />
               {/* 账户设置 */}
               <Route path="/profile" element={
                 <PrivateRoute>

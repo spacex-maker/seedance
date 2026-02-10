@@ -88,9 +88,13 @@ export const auth = {
   },
 
   // 获取谷歌登录授权URL
-  getGoogleAuthUrl: async () => {
+  // targetUrl: 目标前端回调地址（可选），如果不传则使用后端默认配置
+  getGoogleAuthUrl: async (targetUrl) => {
     try {
-      const { data } = await axios.get('/base/productx/auth/google/auth-url');
+      const url = targetUrl 
+        ? `/base/productx/auth/google/auth-url?targetUrl=${encodeURIComponent(targetUrl)}`
+        : '/base/productx/auth/google/auth-url';
+      const { data } = await axios.get(url);
       return data;
     } catch (error) {
       return { 

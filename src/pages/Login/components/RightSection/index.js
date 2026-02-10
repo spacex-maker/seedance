@@ -187,8 +187,9 @@ export const RightSection = ({
   // 处理社交登录按钮点击
   const handleSocialLogin = async (methodCode) => {
     if (methodCode === 'google') {
-      // 谷歌登录
-      const result = await auth.getGoogleAuthUrl();
+      // 谷歌登录：传入当前网站的前端回调地址
+      const targetUrl = window.location.origin + '/auth/google/callback';
+      const result = await auth.getGoogleAuthUrl(targetUrl);
       if (result.success && result.data) {
         window.location.href = result.data;
       } else {
