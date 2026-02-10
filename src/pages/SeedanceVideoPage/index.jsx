@@ -5,6 +5,8 @@ import styled, { ThemeContext } from 'styled-components';
 import SimpleHeader from 'components/headers/simple';
 import SeedanceVideo from 'pages/Workspace/Create/components/SeedanceVideo';
 import FooterSection from 'pages/Home/components/FooterSection';
+import AnnouncementBanner from 'components/AnnouncementBanner';
+import ReopenAnnouncementButton from 'components/AnnouncementBanner/ReopenButton';
 import brandConfig from 'config/brand';
 
 const { Content } = Layout;
@@ -110,7 +112,9 @@ const SeedanceVideoPage = () => {
       </VideoBackdrop>
       <PageWrapper>
         <SimpleHeader />
+        <ReopenAnnouncementButton />
         <PageContent>
+          <AnnouncementBanner />
           <SeedanceVideo />
         </PageContent>
         <FooterSection />

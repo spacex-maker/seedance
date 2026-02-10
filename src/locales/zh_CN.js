@@ -1312,7 +1312,7 @@ export default {
   'footer.openRobotX.description': '全球人形机器人数据库，参数对比与行业资讯',
   'footer.openRobotX.visit': '前往 Open Robot X',
   'footer.ai2obj.title': 'Seedance',
-  'footer.ai2obj.description': 'AI 视频生成平台',
+  'footer.ai2obj.description': 'AI 综合生成平台，提供视频、图像、3D 等多模态 AI 创作服务',
   
   // 定价页面
   'pricing.title': '选择适合您的方案',
@@ -1464,6 +1464,12 @@ export default {
   'invite.qrcode.title': '扫码加入',
   'invite.copyLink': '复制链接',
   'invite.copy.success': '复制成功',
+  // 新模型提示
+  'announcement.seedanceV2.title': '🎉 重磅消息：SeedanceV2 即将上线！',
+  'announcement.seedanceV2.description': '字节跳动旗下全新 SeedanceV2 模型将于 3 月正式发布，带来更强大的视频生成能力和更精细的画面控制。敬请期待！',
+  'announcement.seedanceV2.date': '预计发布时间：2025年3月',
+  'announcement.reopen.button': '新模型',
+  'announcement.reopen.tooltip': '查看新模型公告',
   // 首页 Hero 区域
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'AI创造万物的魔法平台',

@@ -1172,7 +1172,7 @@ export default {
   'footer.openRobotX.description': '사양 비교 및 업계 인사이트가 포함된 글로벌 휴머노이드 로봇 데이터베이스',
   'footer.openRobotX.visit': 'Open Robot X 방문',
   'footer.ai2obj.title': 'Seedance',
-  'footer.ai2obj.description': 'AI 비디오 생성 플랫폼',
+  'footer.ai2obj.description': 'AI 종합 생성 플랫폼, 비디오, 이미지, 3D 등 멀티모달 AI 창작 서비스 제공',
   
   // 가격 페이지
   'pricing.title': '당신에게 맞는 플랜을 선택하세요',
@@ -1324,6 +1324,12 @@ export default {
   'invite.qrcode.title': '스캔하여 참여',
   'invite.copyLink': '링크 복사',
   'invite.copy.success': '복사 완료',
+  // 새 모델 공지
+  'announcement.seedanceV2.title': '🎉 소식: SeedanceV2 곧 출시!',
+  'announcement.seedanceV2.description': 'ByteDance의 새로운 SeedanceV2 모델이 3월에 정식 출시됩니다. 더 강력한 비디오 생성 기능과 더 정밀한 이미지 제어를 제공합니다. 기대해 주세요!',
+  'announcement.seedanceV2.date': '예상 출시일: 2025년 3월',
+  'announcement.reopen.button': '신규 모델',
+  'announcement.reopen.tooltip': '신규 모델 공지 보기',
   // 홈 히어로 섹션
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'AI가 모든 것을 창조하는 마법의 플랫폼',

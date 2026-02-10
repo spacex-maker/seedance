@@ -1118,7 +1118,7 @@ export default {
   'footer.openRobotX.description': 'Globale Humanoid-Robotik-Datenbank mit Spezifikationsvergleich und Brancheneinblicken',
   'footer.openRobotX.visit': 'Open Robot X besuchen',
   'footer.ai2obj.title': 'Seedance',
-  'footer.ai2obj.description': 'KI-Videogenerierungsplattform',
+  'footer.ai2obj.description': 'Umfassende KI-Generierungsplattform, bietet multimodale KI-Erstellungsservices für Video, Bild, 3D und mehr',
   
   // Preisgestaltungsseite
   'pricing.title': 'Wählen Sie den Plan, der zu Ihnen passt',
@@ -1270,6 +1270,12 @@ export default {
   'invite.qrcode.title': 'Scannen zum Beitreten',
   'invite.copyLink': 'Link kopieren',
   'invite.copy.success': 'Erfolgreich kopiert',
+  // Neue Modell-Ankündigung
+  'announcement.seedanceV2.title': '🎉 Aufregende Neuigkeit: SeedanceV2 kommt bald!',
+  'announcement.seedanceV2.description': 'ByteDances brandneues SeedanceV2-Modell wird im März offiziell gestartet und bietet leistungsstärkere Videogenerierungsfunktionen und präzisere Bildsteuerung. Bleiben Sie dran!',
+  'announcement.seedanceV2.date': 'Erwarteter Start: März 2025',
+  'announcement.reopen.button': 'Neues Modell',
+  'announcement.reopen.tooltip': 'Ankündigung des neuen Modells anzeigen',
   // Homepage Hero-Bereich
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'Wo KI Alles Erschafft',

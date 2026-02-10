@@ -1192,7 +1192,7 @@ export default {
   'footer.openRobotX.description': '仕様比較と業界インサイトを備えたグローバル人型ロボットデータベース',
   'footer.openRobotX.visit': 'Open Robot X を訪問',
   'footer.ai2obj.title': 'Seedance',
-  'footer.ai2obj.description': 'AI動画生成プラットフォーム',
+  'footer.ai2obj.description': 'AI総合生成プラットフォーム、動画・画像・3Dなど多モーダルAI創作サービスを提供',
   
   // 価格設定ページ
   'pricing.title': 'あなたに合ったプランを選択',
@@ -1344,6 +1344,12 @@ export default {
   'invite.qrcode.title': 'スキャンして参加',
   'invite.copyLink': 'リンクをコピー',
   'invite.copy.success': 'コピーしました',
+  // 新モデル告知
+  'announcement.seedanceV2.title': '🎉 重大ニュース：SeedanceV2 まもなく登場！',
+  'announcement.seedanceV2.description': 'ByteDanceの新モデル SeedanceV2 が3月に正式リリース予定。より強力な動画生成機能とより細かな画像制御を実現します。お楽しみに！',
+  'announcement.seedanceV2.date': '予定リリース日：2025年3月',
+  'announcement.reopen.button': '新モデル',
+  'announcement.reopen.tooltip': '新モデル告知を表示',
   // ホームヒーローセクション
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'AIがすべてを創造する魔法のプラットフォーム',

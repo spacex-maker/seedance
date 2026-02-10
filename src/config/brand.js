@@ -14,14 +14,14 @@ const brandConfig = {
   productNameFull: 'Seedance 图生视频',
   
   // 网站信息
-  siteUrl: 'https://seedance.com',
+  siteUrl: 'https://ai2obj.com',
   supportEmail: 'support@seedance.com',
   
   // SEO 默认信息
   seo: {
     defaultTitle: 'Seedance - AI 图生视频平台',
     defaultDescription: 'Seedance 是一站式 AI 图生视频平台，提供专业的视频生成服务。',
-    defaultImage: 'https://seedance.com/landing.png',
+    defaultImage: 'https://ai2obj.com/landing.png',
   },
   
   // 版权信息

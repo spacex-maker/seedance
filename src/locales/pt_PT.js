@@ -1110,7 +1110,7 @@ export default {
   'footer.openRobotX.description': 'Base de dados global de robótica humanoide com comparação de especificações e informações da indústria',
   'footer.openRobotX.visit': 'Visitar Open Robot X',
   'footer.ai2obj.title': 'Seedance',
-  'footer.ai2obj.description': 'Plataforma de geração de vídeo com IA',
+  'footer.ai2obj.description': 'Plataforma abrangente de geração com IA, oferece serviços de criação multimodal incluindo vídeo, imagem, 3D e mais',
   
   // Página de preços
   'pricing.title': 'Escolha o plano que funciona para você',
@@ -1262,6 +1262,12 @@ export default {
   'invite.qrcode.title': 'Escaneie para participar',
   'invite.copyLink': 'Copiar link',
   'invite.copy.success': 'Copiado com sucesso',
+  // Anúncio do novo modelo
+  'announcement.seedanceV2.title': '🎉 Grande notícia: SeedanceV2 em breve!',
+  'announcement.seedanceV2.description': 'O novo modelo SeedanceV2 da ByteDance será lançado oficialmente em março, oferecendo capacidades de geração de vídeo mais poderosas e controle de imagem mais refinado. Fiquem atentos!',
+  'announcement.seedanceV2.date': 'Data de lançamento prevista: março de 2025',
+  'announcement.reopen.button': 'Novo modelo',
+  'announcement.reopen.tooltip': 'Ver anúncio do novo modelo',
   // Seção Hero da página inicial
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'Onde a IA Cria Tudo',
