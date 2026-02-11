@@ -1468,8 +1468,8 @@ export default {
   'invite.copy.success': '复制成功',
   // 新模型提示
   'announcement.seedanceV2.title': '🎉 重磅消息：SeedanceV2 即将上线！',
-  'announcement.seedanceV2.description': '字节跳动旗下全新 SeedanceV2 模型将于 3 月正式发布，带来更强大的视频生成能力和更精细的画面控制。敬请期待！',
-  'announcement.seedanceV2.date': '预计发布时间：2025年3月',
+  'announcement.seedanceV2.description': '字节跳动旗下全新 SeedanceV2 模型预计 2026-02-24 18:00:00 后可支持开通，带来更强大的视频生成能力和更精细的画面控制。敬请期待！',
+  'announcement.seedanceV2.date': '预计 2026-02-24 18:00:00 后可支持开通',
   'announcement.reopen.button': '新模型',
   'announcement.reopen.tooltip': '查看新模型公告',
   // 首页 Hero 区域
