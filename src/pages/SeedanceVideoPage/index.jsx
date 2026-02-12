@@ -1,13 +1,12 @@
 import React, { useContext } from 'react';
 import { Layout } from 'antd';
-import { Helmet } from 'react-helmet';
 import styled, { ThemeContext } from 'styled-components';
+import SEO, { SEOConfigs } from 'components/SEO';
 import SimpleHeader from 'components/headers/simple';
 import SeedanceVideo from 'pages/Workspace/Create/components/SeedanceVideo';
 import FooterSection from 'pages/Home/components/FooterSection';
 import AnnouncementBanner from 'components/AnnouncementBanner';
 import ReopenAnnouncementButton from 'components/AnnouncementBanner/ReopenButton';
-import brandConfig from 'config/brand';
 
 const { Content } = Layout;
 
@@ -88,7 +87,7 @@ const PageWrapper = styled(Layout)`
 `;
 
 /**
- * Seedance 图生视频 - 独立整页，无侧栏
+ * Seedance2 图生视频 - 独立整页，无侧栏
  * 路由：/seedance-video
  */
 const SeedanceVideoPage = () => {
@@ -96,10 +95,11 @@ const SeedanceVideoPage = () => {
   
   return (
     <>
-      <Helmet>
-        <title>{brandConfig.productNameFull} - {brandConfig.name}</title>
-        <meta name="description" content={`字节豆包 ${brandConfig.productName} 1.5 图生视频`} />
-      </Helmet>
+      <SEO
+        {...SEOConfigs.home}
+        description="字节豆包 Seedance2 图生视频，一站式 AI 图生视频平台，专业图生视频与文生视频服务。"
+        keywords="Seedance2, 图生视频, 文生视频, 字节豆包, AI视频, 图生视频平台"
+      />
       <VideoBackdrop theme={theme}>
         <video
           src={BACKGROUND_VIDEO_URL}

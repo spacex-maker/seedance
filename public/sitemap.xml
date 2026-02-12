@@ -5,140 +5,140 @@
   
   <!-- 首页 -->
   <url>
-    <loc>https://ai2obj.com/</loc>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://ai2obj.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ai2obj.com/?lang=en"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://ai2obj.com/?lang=ja"/>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://ai2obj.com/?lang=ko"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ai2obj.com/"/>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://seedance2.cn/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://seedance2.cn/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://seedance2.cn/?lang=ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://seedance2.cn/?lang=ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://seedance2.cn/"/>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://ai2obj.com/landing.png</image:loc>
-      <image:title>Seedance - AI 图生视频平台</image:title>
-      <image:caption>Seedance 提供专业的 AI 图生视频服务，基于字节豆包模型</image:caption>
+      <image:loc>https://seedance2.cn/landing.png</image:loc>
+      <image:title>Seedance2 - AI 图生视频平台 | 字节豆包</image:title>
+      <image:caption>Seedance2 提供专业 AI 图生视频与文生视频服务，基于字节豆包模型</image:caption>
     </image:image>
   </url>
   
   <!-- 登录页 -->
   <url>
-    <loc>https://ai2obj.com/login</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/login</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <!-- 注册页 -->
   <url>
-    <loc>https://ai2obj.com/signup</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/signup</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <!-- 帮助中心 -->
   <url>
-    <loc>https://ai2obj.com/help</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/help</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <!-- 反馈 -->
   <url>
-    <loc>https://ai2obj.com/feedback</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/feedback</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <!-- 服务条款 -->
   <url>
-    <loc>https://ai2obj.com/terms-of-service</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/terms-of-service</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <!-- 隐私政策 -->
   <url>
-    <loc>https://ai2obj.com/privacy-policy</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/privacy-policy</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <!-- 充值协议 -->
   <url>
-    <loc>https://ai2obj.com/recharge-agreement</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/recharge-agreement</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   
   <!-- 用户页面（需要登录，但包含在 sitemap 中以便搜索引擎了解网站结构） -->
   <url>
-    <loc>https://ai2obj.com/profile</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/profile</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://ai2obj.com/settings</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/settings</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   
   <url>
-    <loc>https://ai2obj.com/privacy-preferences</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/privacy-preferences</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   
   <!-- 资产与订单 -->
   <url>
-    <loc>https://ai2obj.com/billing</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/billing</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://ai2obj.com/orders</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/orders</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://ai2obj.com/recharge</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/recharge</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <!-- 工作台 -->
   <url>
-    <loc>https://ai2obj.com/works</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/works</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://ai2obj.com/notifications</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/notifications</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   
   <url>
-    <loc>https://ai2obj.com/invite</loc>
-    <lastmod>2025-01-27</lastmod>
+    <loc>https://seedance2.cn/invite</loc>
+    <lastmod>2025-02-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
