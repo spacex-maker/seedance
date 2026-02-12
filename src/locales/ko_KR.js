@@ -1501,6 +1501,13 @@ export default {
   'recharge.message.queryOrderError': '주문 상태 조회 실패',
   'recharge.message.rechargeError': '충전 요청 실패, 나중에 다시 시도하세요',
 
+  // 충전 성공 페이지
+  'recharge.success.title': '결제 완료',
+  'recharge.success.desc': '잔액이 충전되었습니다. 창작을 시작하세요',
+  'recharge.success.orderId': '주문 번호',
+  'recharge.success.goCreate': '창작하기',
+  'recharge.success.dashboard': '청구로 돌아가기',
+
   // 주문 페이지
   'orders.title': '주문 내역',
   'orders.subtitle': '모든 충전 주문 기록 및 상태 보기',

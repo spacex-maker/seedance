@@ -1439,6 +1439,13 @@ export default {
   'recharge.message.queryOrderError': 'Falha ao consultar status do pedido',
   'recharge.message.rechargeError': 'Falha na solicitação de recarga, tente novamente mais tarde',
 
+  // Página sucesso recarga
+  'recharge.success.title': 'Pagamento concluído',
+  'recharge.success.desc': 'Sua conta foi creditada. Comece a criar!',
+  'recharge.success.orderId': 'ID do pedido',
+  'recharge.success.goCreate': 'Criar',
+  'recharge.success.dashboard': 'Voltar à faturação',
+
   // Página de pedidos
   'orders.title': 'Histórico de pedidos',
   'orders.subtitle': 'Veja todos os seus registros de pedidos de recarga e status',

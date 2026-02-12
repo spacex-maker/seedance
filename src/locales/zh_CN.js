@@ -1694,6 +1694,13 @@ export default {
   'recharge.message.queryOrderError': '查询订单状态失败',
   'recharge.message.rechargeError': '充值请求失败，请稍后重试',
 
+  // 充值成功页
+  'recharge.success.title': '支付成功',
+  'recharge.success.desc': '余额已到账，快去创作吧',
+  'recharge.success.orderId': '订单号',
+  'recharge.success.goCreate': '去创作',
+  'recharge.success.dashboard': '返回账单',
+
   // Orders 页面
   'orders.title': '订单记录',
   'orders.subtitle': '查看您的所有充值订单记录和状态',

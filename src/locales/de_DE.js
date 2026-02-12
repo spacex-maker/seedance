@@ -1447,6 +1447,13 @@ export default {
   'recharge.message.queryOrderError': 'Bestellstatus konnte nicht abgefragt werden',
   'recharge.message.rechargeError': 'Auflade-Anfrage fehlgeschlagen, bitte später erneut versuchen',
 
+  // Auflade-Erfolg
+  'recharge.success.title': 'Zahlung erfolgreich',
+  'recharge.success.desc': 'Ihr Konto wurde aufgeladen. Legen Sie los!',
+  'recharge.success.orderId': 'Bestellnummer',
+  'recharge.success.goCreate': 'Jetzt erstellen',
+  'recharge.success.dashboard': 'Zurück zur Abrechnung',
+
   // Bestellseite
   'orders.title': 'Bestellhistorie',
   'orders.subtitle': 'Alle Ihre Auflade-Bestellungen und deren Status anzeigen',

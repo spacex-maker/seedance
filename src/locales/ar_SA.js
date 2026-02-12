@@ -1390,6 +1390,13 @@ export default {
   'recharge.message.queryOrderError': 'فشل في الاستعلام عن حالة الطلب',
   'recharge.message.rechargeError': 'فشل طلب إعادة الشحن، يرجى المحاولة لاحقاً',
 
+  // صفحة نجاح الشحن
+  'recharge.success.title': 'تم الدفع بنجاح',
+  'recharge.success.desc': 'تم إضافة الرصيد إلى حسابك. ابدأ الإنشاء!',
+  'recharge.success.orderId': 'رقم الطلب',
+  'recharge.success.goCreate': 'ابدأ الإنشاء',
+  'recharge.success.dashboard': 'العودة للفواتير',
+
   // صفحة الطلبات
   'orders.title': 'سجل الطلبات',
   'orders.subtitle': 'عرض جميع سجلات طلبات الشحن والحالة',

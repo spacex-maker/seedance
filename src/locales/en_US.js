@@ -1638,6 +1638,13 @@ export default {
   'recharge.message.queryOrderError': 'Failed to query order status',
   'recharge.message.rechargeError': 'Recharge request failed, please try again later',
 
+  // Recharge Success Page
+  'recharge.success.title': 'Payment Successful',
+  'recharge.success.desc': 'Your account has been credited. Start creating!',
+  'recharge.success.orderId': 'Order ID',
+  'recharge.success.goCreate': 'Start Creating',
+  'recharge.success.dashboard': 'Back to Billing',
+
   // Orders Page
   'orders.title': 'Order History',
   'orders.subtitle': 'View all your recharge order records and status',

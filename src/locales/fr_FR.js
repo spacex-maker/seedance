@@ -1461,6 +1461,13 @@ export default {
   'recharge.message.queryOrderError': 'Échec de la requête du statut de la commande',
   'recharge.message.rechargeError': 'Échec de la demande de recharge, veuillez réessayer plus tard',
 
+  // Page succès recharge
+  'recharge.success.title': 'Paiement réussi',
+  'recharge.success.desc': 'Votre compte a été crédité. À vous de créer !',
+  'recharge.success.orderId': 'N° de commande',
+  'recharge.success.goCreate': 'Créer',
+  'recharge.success.dashboard': 'Retour à la facturation',
+
   // Page des commandes
   'orders.title': 'Historique des commandes',
   'orders.subtitle': 'Consultez tous vos enregistrements de commandes de recharge et leurs statuts',

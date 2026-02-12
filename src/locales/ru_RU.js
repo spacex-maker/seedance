@@ -1376,6 +1376,13 @@ export default {
   'recharge.message.queryOrderError': 'Не удалось запросить статус заказа',
   'recharge.message.rechargeError': 'Ошибка запроса на пополнение, повторите попытку позже',
 
+  // Страница успешного пополнения
+  'recharge.success.title': 'Оплата прошла успешно',
+  'recharge.success.desc': 'Счёт пополнен. Начните создавать!',
+  'recharge.success.orderId': 'Номер заказа',
+  'recharge.success.goCreate': 'Создавать',
+  'recharge.success.dashboard': 'Вернуться к счётам',
+
   // Страница заказов
   'orders.title': 'История заказов',
   'orders.subtitle': 'Просмотр всех записей о заказах пополнения и их статусов',
