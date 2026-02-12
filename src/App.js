@@ -22,6 +22,7 @@ import HelpPage from './pages/Help';
 import PrivacyPolicyPage from './pages/PrivacyPolicy';
 import TermsOfServicePage from './pages/TermsOfService';
 import RechargePage from './pages/Recharge';
+import RechargeSuccessPage from './pages/RechargeSuccess';
 import RechargeAgreementPage from './pages/RechargeAgreement';
 import LoginPage from './pages/Login';
 import SignupPage from './pages/Signup';
@@ -307,6 +308,11 @@ export default function App() {
               <Route path="/recharge" element={
                 <PrivateRoute>
                   <RechargePage />
+                </PrivateRoute>
+              } />
+              <Route path="/recharge/success" element={
+                <PrivateRoute>
+                  <RechargeSuccessPage />
                 </PrivateRoute>
               } />
               <Route path="/recharge-agreement" element={<RechargeAgreementPage />} />
