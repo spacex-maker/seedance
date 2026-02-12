@@ -1395,6 +1395,8 @@ export default {
   'recharge.section.coinType': 'Devise de recharge',
   'recharge.section.paymentMethod': 'Moyen de paiement',
   'recharge.section.amount': 'Montant de recharge',
+  'recharge.token.base': 'Base',
+  'recharge.token.gift': 'Cadeau',
   'recharge.order.title': 'Détails de la commande',
   'recharge.order.type': 'Type de recharge',
   'recharge.order.typeValue': 'Recharge du solde du compte',

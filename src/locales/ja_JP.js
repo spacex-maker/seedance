@@ -1471,6 +1471,8 @@ export default {
   'recharge.section.coinType': 'チャージ通貨',
   'recharge.section.paymentMethod': '支払い方法',
   'recharge.section.amount': 'チャージ金額',
+  'recharge.token.base': '基本',
+  'recharge.token.gift': 'プレゼント',
   
   // 注文詳細
   'recharge.order.title': '注文詳細',

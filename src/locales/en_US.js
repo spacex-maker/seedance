@@ -1560,6 +1560,8 @@ export default {
   'recharge.section.coinType': 'Currency Type',
   'recharge.section.paymentMethod': 'Payment Method',
   'recharge.section.amount': 'Recharge Amount',
+  'recharge.token.base': 'Base',
+  'recharge.token.gift': 'Gift',
   
   // Order Details
   'recharge.order.title': 'Order Details',

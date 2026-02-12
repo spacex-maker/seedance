@@ -1330,6 +1330,8 @@ export default {
   'recharge.section.coinType': 'Valuta di ricarica',
   'recharge.section.paymentMethod': 'Metodo di pagamento',
   'recharge.section.amount': 'Importo ricarica',
+  'recharge.token.base': 'Base',
+  'recharge.token.gift': 'Omaggio',
   'recharge.order.title': 'Dettagli ordine',
   'recharge.order.type': 'Tipo di ricarica',
   'recharge.order.typeValue': 'Ricarica saldo account',

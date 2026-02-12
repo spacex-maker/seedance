@@ -1304,6 +1304,8 @@ export default {
   'recharge.section.coinType': 'Moneda de recarga',
   'recharge.section.paymentMethod': 'Método de pago',
   'recharge.section.amount': 'Cantidad de recarga',
+  'recharge.token.base': 'Base',
+  'recharge.token.gift': 'Regalo',
   'recharge.order.title': 'Detalles del pedido',
   'recharge.order.type': 'Tipo de recarga',
   'recharge.order.typeValue': 'Recarga de saldo de cuenta',

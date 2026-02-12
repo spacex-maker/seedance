@@ -1381,6 +1381,8 @@ export default {
   'recharge.section.coinType': 'Aufladen Währung',
   'recharge.section.paymentMethod': 'Zahlungsmethode',
   'recharge.section.amount': 'Aufladebetrag',
+  'recharge.token.base': 'Basis',
+  'recharge.token.gift': 'Geschenk',
   'recharge.order.title': 'Bestelldetails',
   'recharge.order.type': 'Aufladen Typ',
   'recharge.order.typeValue': 'Kontoguthaben aufladen',

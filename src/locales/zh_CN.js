@@ -1616,6 +1616,8 @@ export default {
   'recharge.section.coinType': '充值币种',
   'recharge.section.paymentMethod': '支付方式',
   'recharge.section.amount': '充值金额',
+  'recharge.token.base': '基础',
+  'recharge.token.gift': '赠送',
   
   // 订单详情
   'recharge.order.title': '订单详情',
@@ -1637,7 +1639,7 @@ export default {
   // 安全认证
   'recharge.security.ssl': 'SSL 安全加密传输，保障资金安全',
   'recharge.security.agreement': '点击支付即代表您同意',
-  'recharge.security.agreementLink': '《充值服务协议》',
+  'recharge.security.agreementLink': '《用户充值协议》',
   
   // 空状态提示
   'recharge.empty.noCurrency': '暂无支持的货币',

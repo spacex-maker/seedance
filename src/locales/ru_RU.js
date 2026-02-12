@@ -1310,6 +1310,8 @@ export default {
   'recharge.section.coinType': 'Валюта пополнения',
   'recharge.section.paymentMethod': 'Способ оплаты',
   'recharge.section.amount': 'Сумма пополнения',
+  'recharge.token.base': 'Базовый',
+  'recharge.token.gift': 'Бонус',
   'recharge.order.title': 'Детали заказа',
   'recharge.order.type': 'Тип пополнения',
   'recharge.order.typeValue': 'Пополнение баланса счета',

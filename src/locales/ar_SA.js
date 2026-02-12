@@ -1324,6 +1324,8 @@ export default {
   'recharge.section.coinType': 'عملة إعادة الشحن',
   'recharge.section.paymentMethod': 'طريقة الدفع',
   'recharge.section.amount': 'مبلغ إعادة الشحن',
+  'recharge.token.base': 'أساسي',
+  'recharge.token.gift': 'هدية',
   'recharge.order.title': 'تفاصيل الطلب',
   'recharge.order.type': 'نوع إعادة الشحن',
   'recharge.order.typeValue': 'إعادة شحن رصيد الحساب',

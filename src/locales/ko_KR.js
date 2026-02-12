@@ -1435,6 +1435,8 @@ export default {
   'recharge.section.coinType': '충전 통화',
   'recharge.section.paymentMethod': '결제 수단',
   'recharge.section.amount': '충전 금액',
+  'recharge.token.base': '기본',
+  'recharge.token.gift': '증정',
   'recharge.order.title': '주문 상세',
   'recharge.order.type': '충전 유형',
   'recharge.order.typeValue': '계정 잔액 충전',
