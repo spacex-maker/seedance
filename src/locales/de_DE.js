@@ -1116,6 +1116,7 @@ export default {
   'footer.resources.orders': 'Bestellzentrum',
   'footer.copyright': '© {year} {brand}. Alle Rechte vorbehalten.',
   'footer.description': 'Diese Plattform bietet KI-Generierungsdienste an',
+  'footer.disclaimer': 'Haftungsausschluss: Diese Website (Seedance) wird von einem unabhängigen Dritten betrieben und ist keine offizielle Plattform von ByteDance oder Volcano Engine. Die Website nutzt Volcano-Engine-APIs. Die Domain seedance2.cn ist nur ein Zugangspunkt und nicht mit den genannten Marken verbunden.',
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': 'Globale Humanoid-Robotik-Datenbank mit Spezifikationsvergleich und Brancheneinblicken',
   'footer.openRobotX.visit': 'Open Robot X besuchen',
@@ -1278,7 +1279,10 @@ export default {
   'announcement.seedanceV2.date': 'Erwarteter Start: März 2025',
   'announcement.reopen.button': 'Neues Modell',
   'announcement.reopen.tooltip': 'Ankündigung des neuen Modells anzeigen',
+  'announcement.reopen.viewAnnouncement': 'Seedance2-Ankündigung anzeigen',
+  'announcement.disclaimer': 'Haftungsausschluss: Diese Website (Seedance) wird von einem unabhängigen Dritten betrieben und ist keine offizielle Plattform von ByteDance oder Volcano Engine. Die Videogenerierung wird von Volcano Engine bereitgestellt. Die Domain seedance2.cn ist nur ein Zugangspunkt und nicht mit den genannten Marken verbunden.',
   // Homepage Hero-Bereich
+  'home.poweredBy': 'Die Videogenerierung wird von Volcano Engine bereitgestellt.',
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'Wo KI Alles Erschafft',
   'home.hero.description': 'Vom Konzept zur Kreation, von der Vorstellung zur Realität. Entwerfen und generieren Sie alles mit KI — Text zu Bild, Bild zu Video, Ideen zum Leben. Jeder Gedanke kann zu greifbarer Kunst werden.',

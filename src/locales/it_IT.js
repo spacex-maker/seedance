@@ -1065,6 +1065,7 @@ export default {
   'footer.resources.orders': 'Centro ordini',
   'footer.copyright': '© {year} {brand}. Tutti i diritti riservati.',
   'footer.description': 'Questa piattaforma fornisce servizi di generazione con IA',
+  'footer.disclaimer': 'Disclaimer: Questo sito (Seedance) è gestito in modo indipendente da terzi e non è una piattaforma ufficiale di ByteDance o Volcano Engine. Il sito utilizza le API di Volcano Engine. Il dominio seedance2.cn è solo un punto di accesso e non è affiliato ai marchi citati.',
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': 'Database globale di robotica umanoide con confronto specifiche e approfondimenti del settore',
   'footer.openRobotX.visit': 'Visita Open Robot X',
@@ -1227,7 +1228,10 @@ export default {
   'announcement.seedanceV2.date': 'Data di lancio prevista: marzo 2025',
   'announcement.reopen.button': 'Nuovo modello',
   'announcement.reopen.tooltip': 'Visualizza annuncio nuovo modello',
+  'announcement.reopen.viewAnnouncement': 'Visualizza annuncio Seedance2',
+  'announcement.disclaimer': 'Disclaimer: Questo sito (Seedance) è gestito in modo indipendente da terzi e non è una piattaforma ufficiale di ByteDance o Volcano Engine. La generazione video è fornita da Volcano Engine. Il dominio seedance2.cn è solo un punto di accesso e non è affiliato ai marchi citati.',
   // Sezione Hero homepage
+  'home.poweredBy': 'La generazione video è fornita da Volcano Engine.',
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'Dove l\'IA Crea Tutto',
   'home.hero.description': 'Dal concetto alla creazione, dall\'immaginazione alla realtà. Progetta e genera qualsiasi cosa con l\'IA — testo in immagine, immagine in video, idee in vita. Ogni pensiero può diventare arte tangibile.',

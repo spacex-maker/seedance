@@ -1472,7 +1472,11 @@ export default {
   'announcement.seedanceV2.date': '预计 2026-02-24 18:00:00 后可支持开通',
   'announcement.reopen.button': '新模型',
   'announcement.reopen.tooltip': '查看新模型公告',
+  'announcement.reopen.viewAnnouncement': '查看 Seedance2 公告',
+  'announcement.disclaimer': '免责说明：本站（Seedance）由第三方团队独立运营，非字节跳动（ByteDance）或火山引擎（Volcano Engine）官方平台。本站视频生成能力基于火山引擎提供。域名 seedance2.cn 仅为访问入口，与上述公司品牌无直接关联。',
   // 首页 Hero 区域
+  'home.poweredBy': '本站视频生成核心技术由 火山引擎 (Volcano Engine) 提供强力驱动',
+  'footer.disclaimer': '免责声明：本站（Seedance）由第三方团队独立运营，非字节跳动（ByteDance）或火山引擎（Volcano Engine）官方平台。本站技术基于火山引擎提供的大模型能力构建。域名 seedance2.cn 仅为本站访问入口，与上述公司品牌无直接关联。',
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'AI创造万物的魔法平台',
   'home.hero.description': '从概念到实体，从想象到现实。用AI设计并生成一切——文字成画、画面成片、创意成真。你的每一个想法，都能在这里化为可见、可触的作品。',

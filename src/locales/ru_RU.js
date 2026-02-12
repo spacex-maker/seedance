@@ -1045,6 +1045,7 @@ export default {
   'footer.resources.orders': 'Центр заказов',
   'footer.copyright': '© {year} {brand}. Все права защищены.',
   'footer.description': 'Эта платформа предоставляет услуги генерации с помощью ИИ',
+  'footer.disclaimer': 'Отказ от ответственности: данный сайт (Seedance) независимо управляется третьей стороной и не является официальной платформой ByteDance или Volcano Engine. Сайт построен на API Volcano Engine. Домен seedance2.cn является лишь точкой доступа и не связан с указанными брендами.',
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': 'Глобальная база данных гуманоидной робототехники с сравнением характеристик и отраслевыми аналитическими данными',
   'footer.openRobotX.visit': 'Посетить Open Robot X',
@@ -1207,7 +1208,10 @@ export default {
   'announcement.seedanceV2.date': 'Ожидаемая дата запуска: март 2025',
   'announcement.reopen.button': 'Новая модель',
   'announcement.reopen.tooltip': 'Просмотреть объявление о новой модели',
+  'announcement.reopen.viewAnnouncement': 'Просмотреть объявление Seedance2',
+  'announcement.disclaimer': 'Отказ от ответственности: данный сайт (Seedance) независимо управляется третьей стороной и не является официальной платформой ByteDance или Volcano Engine. Генерация видео обеспечивается Volcano Engine. Домен seedance2.cn является лишь точкой доступа и не связан с указанными брендами.',
   // Раздел Hero главной страницы
+  'home.poweredBy': 'Генерация видео обеспечивается Volcano Engine.',
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'Где ИИ Создает Все',
   'home.hero.description': 'От концепции к творению, от воображения к реальности. Проектируйте и создавайте все с помощью ИИ — текст в изображение, изображение в видео, идеи в жизнь. Каждая мысль может стать осязаемым искусством.',

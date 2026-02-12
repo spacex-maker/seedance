@@ -1059,6 +1059,7 @@ export default {
   'footer.resources.orders': 'مركز الطلبات',
   'footer.copyright': '© {year} {brand}. جميع الحقوق محفوظة.',
   'footer.description': 'توفر هذه المنصة خدمات الإنشاء بالذكاء الاصطناعي',
+  'footer.disclaimer': 'إخلاء المسؤولية: هذا الموقع (Seedance) تديره جهة ثالثة بشكل مستقل وليس منصة رسمية لـ ByteDance أو Volcano Engine. يعتمد الموقع على واجهات Volcano Engine. النطاق seedance2.cn هو نقطة وصول فقط ولا يرتبط بالعلامات المذكورة.',
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': 'قاعدة بيانات عالمية للروبوتات البشرية مع مقارنة المواصفات ورؤى الصناعة',
   'footer.openRobotX.visit': 'زيارة Open Robot X',
@@ -1221,7 +1222,10 @@ export default {
   'announcement.seedanceV2.date': 'تاريخ الإطلاق المتوقع: مارس 2025',
   'announcement.reopen.button': 'نموذج جديد',
   'announcement.reopen.tooltip': 'عرض إعلان النموذج الجديد',
+  'announcement.reopen.viewAnnouncement': 'عرض إعلان Seedance2',
+  'announcement.disclaimer': 'إخلاء المسؤولية: هذا الموقع (Seedance) تديره جهة ثالثة بشكل مستقل وليس منصة رسمية لـ ByteDance أو Volcano Engine. يتم توفير إنشاء الفيديو بواسطة Volcano Engine. النطاق seedance2.cn هو نقطة وصول فقط ولا يرتبط بالعلامات المذكورة.',
   // قسم البطل في الصفحة الرئيسية
+  'home.poweredBy': 'توفير تقنية إنشاء الفيديو بواسطة Volcano Engine.',
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'حيث يخلق الذكاء الاصطناعي كل شيء',
   'home.hero.description': 'من المفهوم إلى الإبداع، ومن الخيال إلى الواقع. صمم وأنشئ أي شيء بالذكاء الاصطناعي — من النص إلى الصورة، ومن الصورة إلى الفيديو، والأفكار إلى الحياة. يمكن لكل فكرة أن تصبح فنًا ملموسًا.',

@@ -1170,6 +1170,7 @@ export default {
   'footer.resources.orders': '주문 센터',
   'footer.copyright': '© {year} {brand}. 모든 권리 보유.',
   'footer.description': '이 플랫폼은 AI 생성 서비스를 제공합니다',
+  'footer.disclaimer': '면책 조항: 본 사이트(Seedance)는 제3자 팀이 독립 운영하며 ByteDance 또는 Volcano Engine 공식 플랫폼이 아닙니다. 본 사이트는 Volcano Engine API로 구축되었습니다. 도메인 seedance2.cn은 접속 경로일 뿐이며 위 브랜드와 직접적 연관이 없습니다.',
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': '사양 비교 및 업계 인사이트가 포함된 글로벌 휴머노이드 로봇 데이터베이스',
   'footer.openRobotX.visit': 'Open Robot X 방문',
@@ -1332,7 +1333,10 @@ export default {
   'announcement.seedanceV2.date': '예상 출시일: 2025년 3월',
   'announcement.reopen.button': '신규 모델',
   'announcement.reopen.tooltip': '신규 모델 공지 보기',
+  'announcement.reopen.viewAnnouncement': 'Seedance2 공지 보기',
+  'announcement.disclaimer': '면책 조항: 본 사이트(Seedance)는 제3자 팀이 독립적으로 운영하며 ByteDance 또는 Volcano Engine 공식 플랫폼이 아닙니다. 영상 생성은 Volcano Engine으로 제공됩니다. 도메인 seedance2.cn은 접속 경로일 뿐이며 위 브랜드와 직접적 연관이 없습니다.',
   // 홈 히어로 섹션
+  'home.poweredBy': '영상 생성 핵심 기술은 Volcano Engine이 제공합니다.',
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'AI가 모든 것을 창조하는 마법의 플랫폼',
   'home.hero.description': '개념에서 실체로, 상상에서 현실로. AI로 모든 것을 디자인하고 생성하세요 — 텍스트에서 이미지로, 이미지에서 비디오로, 아이디어를 현실로. 당신의 모든 생각이 여기서 눈에 보이는 작품이 됩니다.',

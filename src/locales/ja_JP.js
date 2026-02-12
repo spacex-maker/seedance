@@ -1190,6 +1190,7 @@ export default {
   'footer.resources.orders': '注文センター',
   'footer.copyright': '© {year} {brand}. 全著作権所有。',
   'footer.description': '本プラットフォームはAI生成サービスを提供しています',
+  'footer.disclaimer': '免責事項：本サイト（Seedance）は第三者チームが独立運営しており、ByteDance または Volcano Engine の公式プラットフォームではありません。本サイトは火山引擎のAPIで構築されています。ドメイン seedance2.cn はアクセス窓口であり、上記ブランドと直接の関連はありません。',
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': '仕様比較と業界インサイトを備えたグローバル人型ロボットデータベース',
   'footer.openRobotX.visit': 'Open Robot X を訪問',
@@ -1352,7 +1353,10 @@ export default {
   'announcement.seedanceV2.date': '予定リリース日：2025年3月',
   'announcement.reopen.button': '新モデル',
   'announcement.reopen.tooltip': '新モデル告知を表示',
+  'announcement.reopen.viewAnnouncement': 'Seedance2 告知を見る',
+  'announcement.disclaimer': '免責事項：本サイト（Seedance）は第三者チームが独立運営しており、ByteDance（バイトダンス）またはVolcano Engine（火山引擎）の公式プラットフォームではありません。動画生成機能はVolcano Engineにより提供されています。ドメイン seedance2.cn は当サイトのアクセス窓口であり、上記企業ブランドと直接の関連はありません。',
   // ホームヒーローセクション
+  'home.poweredBy': '動画生成の中核技術は Volcano Engine（火山引擎）により提供されています。',
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'AIがすべてを創造する魔法のプラットフォーム',
   'home.hero.description': 'コンセプトから実体へ、想像から現実へ。AIであらゆるものをデザインし生成——テキストから画像、画像から動画、アイデアを現実に。あなたのすべての思考が、ここで目に見える作品になります。',

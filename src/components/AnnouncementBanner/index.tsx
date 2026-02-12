@@ -132,6 +132,18 @@ const AnnouncementBanner: React.FC<AnnouncementBannerProps> = ({
                 defaultMessage="预计发布时间：2025年3月" 
               />
             </div>
+            <div style={{ 
+              marginTop: 10,
+              paddingTop: 8,
+              borderTop: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.06)',
+              fontSize: 12,
+              opacity: 0.85
+            }}>
+              <FormattedMessage 
+                id="announcement.disclaimer" 
+                defaultMessage="免责说明：本站由第三方团队独立运营，非字节跳动或火山引擎官方。视频生成能力基于火山引擎提供。域名 seedance2.cn 仅为访问入口，与上述公司品牌无直接关联。" 
+              />
+            </div>
           </div>
         }
         type="info"

@@ -513,6 +513,14 @@ const FooterSectionComponent = () => {
               {intl.formatMessage({ id: 'footer.description', defaultMessage: `本平台提供 ${brandConfig.productNameFull} 服务` })}
             </Text>
           </p>
+          <p style={{ marginTop: 8, maxWidth: 720, marginLeft: 'auto', marginRight: 'auto' }}>
+            <Text type="secondary" style={{ fontSize: 12 }}>
+              {intl.formatMessage({
+                id: 'footer.disclaimer',
+                defaultMessage: '免责声明：本站（Seedance）由第三方团队独立运营，非字节跳动（ByteDance）或火山引擎（Volcano Engine）官方平台。本站技术基于火山引擎提供的大模型能力构建。域名 seedance2.cn 仅为本站访问入口，与上述公司品牌无直接关联。'
+              })}
+            </Text>
+          </p>
         </Copyright>
       </FooterContent>
     </FooterContainer>

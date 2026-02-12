@@ -1239,6 +1239,7 @@ export default {
   'footer.resources.orders': 'Order Center',
   'footer.copyright': '© {year} {brand}. All rights reserved.',
   'footer.description': 'This platform provides AI generation services',
+  'footer.disclaimer': 'Disclaimer: This site (Seedance) is independently operated by a third party and is not an official platform of ByteDance or Volcano Engine. This site is built using Volcano Engine APIs. The domain seedance2.cn is only an access point and is not affiliated with the above brands.',
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': 'Global humanoid robotics database with specs comparison and industry insights',
   'footer.openRobotX.visit': 'Visit Open Robot X',
@@ -1401,7 +1402,10 @@ export default {
   'announcement.seedanceV2.date': 'Expected Launch: March 2025',
   'announcement.reopen.button': 'New Model',
   'announcement.reopen.tooltip': 'View new model announcement',
+  'announcement.reopen.viewAnnouncement': 'View Seedance2 announcement',
+  'announcement.disclaimer': 'Disclaimer: This site (Seedance) is independently operated by a third party and is not an official platform of ByteDance or Volcano Engine. Video generation is powered by Volcano Engine. The domain seedance2.cn is only an access point and is not affiliated with the above brands.',
   // Home Hero Section
+  'home.poweredBy': 'Video generation is powered by Volcano Engine.',
   'home.hero.badge': 'Introducing the new Workflow',
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'Where AI Creates Everything',
