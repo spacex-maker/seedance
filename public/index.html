@@ -52,15 +52,15 @@
       })();
     </script>
 
-    <!-- 百度统计 -->
+    <!-- 第三方统计：页面加载完成后再异步加载，不阻塞首屏（通用写法） -->
     <script>
-      var _hmt = _hmt || [];
-      (function() {
+      window._hmt = window._hmt || [];
+      window.addEventListener("load", function() {
         var hm = document.createElement("script");
+        hm.async = true;
         hm.src = "https://hm.baidu.com/hm.js?2bfc913a076e822db2190750f4f50e65";
-        var s = document.getElementsByTagName("script")[0]; 
-        s.parentNode.insertBefore(hm, s);
-      })();
+        document.body.appendChild(hm);
+      });
     </script>
   </head>
   <body>
