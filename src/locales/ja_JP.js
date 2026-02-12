@@ -642,6 +642,7 @@ export default {
   'create.i2v.result': '生成比較',
   'create.i2v.empty': '生成結果と元画像の比較がここに表示されます',
   'create.generate.i2v': '動画生成を開始',
+  'create.compliance.notice': 'Content Compliance Notice',
   'create.prompt.i2v.placeholder': '例：画像内の人物を歩かせ、背景の葉を風に揺らす...',
   'create.prompt.enhance.tooltip': 'AIでプロンプトを豊かにし、説明をより詳細で生き生きとさせます',
   'create.prompt.enhance': 'AI強化',

@@ -622,6 +622,7 @@ export default {
   'create.i2v.result': '생성 비교',
   'create.i2v.empty': '생성 결과와 원본 이미지 비교가 여기에 표시됩니다',
   'create.generate.i2v': '동영상 생성 시작',
+  'create.compliance.notice': 'Content Compliance Notice',
   'create.prompt.i2v.placeholder': '예: 이미지의 인물이 걷기 시작하고, 배경의 나뭇잎이 바람에 흔들리기...',
   'create.prompt.enhance.tooltip': 'AI로 프롬프트를 풍부하게 하여 설명을 더 자세하고 생생하게 만듭니다',
   'create.prompt.enhance': 'AI 강화',

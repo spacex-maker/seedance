@@ -546,6 +546,7 @@ export default {
   'create.i2v.result': 'Comparación de generación',
   'create.i2v.empty': 'La comparación de resultados generados y la imagen original se mostrará aquí',
   'create.generate.i2v': 'Comenzar generación de video',
+  'create.compliance.notice': 'Content Compliance Notice',
   'create.prompt.i2v.placeholder': 'Ej: Hacer que la persona en la imagen comience a caminar, las hojas en el fondo se balancean con el viento...',
   'create.prompt.enhance.tooltip': 'Enriquecer el prompt con IA para hacer la descripción más detallada y vívida',
   'create.prompt.enhance': 'Enriquecer con IA',

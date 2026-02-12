@@ -687,6 +687,7 @@ export default {
   'create.i2v.result': '生成对比',
   'create.i2v.empty': '生成结果与原图对比将显示在此处',
   'create.generate.i2v': '开始生成视频',
+  'create.compliance.notice': '内容合规提示',
   'create.prompt.i2v.placeholder': '例如：让图片中的人物开始行走，背景的树叶随风摇摆...',
   'create.prompt.enhance.tooltip': 'AI丰富提示词，让描述更加详细生动',
   'create.prompt.enhance': 'AI丰富',

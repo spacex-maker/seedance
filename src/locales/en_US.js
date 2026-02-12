@@ -640,6 +640,7 @@ export default {
   'create.i2v.result': 'Generation Comparison',
   'create.i2v.empty': 'Generated results and original image comparison will be displayed here',
   'create.generate.i2v': 'Start Generating Video',
+  'create.compliance.notice': 'Content Compliance Notice',
   'create.prompt.i2v.placeholder': 'e.g., Make the person in the image start walking, leaves in the background swaying in the wind...',
   'create.prompt.enhance.tooltip': 'AI enrich prompt to make the description more detailed and vivid',
   'create.prompt.enhance': 'AI Enrich',

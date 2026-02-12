@@ -566,6 +566,7 @@ export default {
   'create.i2v.result': 'مقارنة الإنشاء',
   'create.i2v.empty': 'سيتم عرض مقارنة النتائج المولدة والصورة الأصلية هنا',
   'create.generate.i2v': 'بدء إنشاء الفيديو',
+  'create.compliance.notice': 'Content Compliance Notice',
   'create.prompt.i2v.placeholder': 'مثال: جعل الشخص في الصورة يبدأ المشي، أوراق الخلفية تتأرجح في الريح...',
   'create.prompt.enhance.tooltip': 'إثراء المطالبة بالذكاء الاصطناعي لجعل الوصف أكثر تفصيلاً وحيوية',
   'create.prompt.enhance': 'إثراء بالذكاء الاصطناعي',

@@ -623,6 +623,7 @@ export default {
   'create.i2v.result': 'Generierungsvergleich',
   'create.i2v.empty': 'Vergleich der generierten Ergebnisse mit dem Originalbild wird hier angezeigt',
   'create.generate.i2v': 'Videogenerierung starten',
+  'create.compliance.notice': 'Content Compliance Notice',
   'create.prompt.i2v.placeholder': 'z.B. Die Person im Bild zum Gehen bringen, Blätter im Hintergrund im Wind schwingen...',
   'create.prompt.enhance.tooltip': 'Prompt mit KI anreichern, um die Beschreibung detaillierter und lebendiger zu machen',
   'create.prompt.enhance': 'KI-Anreicherung',
