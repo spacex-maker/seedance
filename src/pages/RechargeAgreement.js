@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import SimpleHeader from "components/headers/simple";
+import SEO, { SEOConfigs } from "components/SEO";
 import { ConfigProvider, theme, Button } from "antd";
 import { FileTextOutlined, ArrowLeftOutlined, WalletOutlined } from "@ant-design/icons";
 import { useIntl } from 'react-intl';
@@ -230,6 +231,7 @@ const RechargeAgreementContent = () => {
 
   return (
     <PageLayout $token={token}>
+      <SEO {...SEOConfigs.rechargeAgreement} />
       <SimpleHeader />
       
       <ContentContainer

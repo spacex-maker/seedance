@@ -1,7 +1,7 @@
 {
-  "short_name": "Seedance",
-  "name": "Seedance",
-  "description": "Seedance 前端应用",
+  "short_name": "Seedance2",
+  "name": "Seedance2",
+  "description": "Seedance2 - AI 图生视频平台，基于字节豆包，一站式专业视频生成服务",
   "icons": [
     {
       "src": "favicon.png",

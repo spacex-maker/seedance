@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Helmet } from 'react-helmet';
+import SEO, { SEOConfigs } from 'components/SEO';
 import { useIntl } from "react-intl";
 import { useTheme } from "styled-components";
 import { useLocale } from "../../contexts/LocaleContext";
@@ -214,11 +214,9 @@ const SignupPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{intl.formatMessage({ id: 'signup.page.title' })}</title>
-        <meta name="description" content="注册 Seedance，开始您的 AI 创作" />
+      <SEO {...SEOConfigs.signup}>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      </Helmet>
+      </SEO>
       <SimpleHeader />
       <PageContainer>
         <RightSection 
