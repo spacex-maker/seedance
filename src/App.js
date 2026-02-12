@@ -8,6 +8,8 @@ import { LocaleProvider } from './contexts/LocaleContext';
 import { Helmet } from 'react-helmet';
 import SeedanceVideoPage from './pages/SeedanceVideoPage';
 import brandConfig from './config/brand';
+import LoginPrompt from './components/LoginPrompt';
+import GoogleOneTap from './components/GoogleOneTap';
 import ProfilePage from './pages/Profile';
 import SettingsPage from './pages/Settings';
 import PrivacyPreferencesPage from './pages/PrivacyPreferences';
@@ -261,6 +263,8 @@ export default function App() {
           <GlobalStyles />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <BaiduAnalyticsTracker />
+            <GoogleOneTap />
+            <LoginPrompt />
             <Routes>
               <Route path="/" element={<SeedanceVideoPage />} />
               {/* 认证页面 */}

@@ -688,6 +688,17 @@ export default {
   'create.i2v.empty': '生成结果与原图对比将显示在此处',
   'create.generate.i2v': '开始生成视频',
   'create.compliance.notice': '内容合规提示',
+  
+  // 登录提示弹窗
+  'loginPrompt.title': '快速登录',
+  'loginPrompt.description': '使用 Google 账号快速登录，享受更多功能',
+  'loginPrompt.googleButton': '使用 Google 登录',
+  'loginPrompt.otherLogin': '其他登录方式',
+  'loginPrompt.googleLoginError': '获取谷歌授权链接失败',
+  
+  // Google One Tap
+  'googleOneTap.loginSuccess': '登录成功',
+  'googleOneTap.loginError': '登录失败',
   'create.prompt.i2v.placeholder': '例如：让图片中的人物开始行走，背景的树叶随风摇摆...',
   'create.prompt.enhance.tooltip': 'AI丰富提示词，让描述更加详细生动',
   'create.prompt.enhance': 'AI丰富',

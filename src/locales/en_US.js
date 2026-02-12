@@ -641,6 +641,17 @@ export default {
   'create.i2v.empty': 'Generated results and original image comparison will be displayed here',
   'create.generate.i2v': 'Start Generating Video',
   'create.compliance.notice': 'Content Compliance Notice',
+  
+  // Login Prompt Popup
+  'loginPrompt.title': 'Quick Login',
+  'loginPrompt.description': 'Sign in with Google to access more features',
+  'loginPrompt.googleButton': 'Sign in with Google',
+  'loginPrompt.otherLogin': 'Other login methods',
+  'loginPrompt.googleLoginError': 'Failed to get Google authorization link',
+  
+  // Google One Tap
+  'googleOneTap.loginSuccess': 'Login successful',
+  'googleOneTap.loginError': 'Login failed',
   'create.prompt.i2v.placeholder': 'e.g., Make the person in the image start walking, leaves in the background swaying in the wind...',
   'create.prompt.enhance.tooltip': 'AI enrich prompt to make the description more detailed and vivid',
   'create.prompt.enhance': 'AI Enrich',

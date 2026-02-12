@@ -133,5 +133,47 @@ export const auth = {
         message: error.response?.data?.message || '谷歌登录失败' 
       };
     }
+  },
+
+  // 获取 Google Client ID（用于 One Tap）
+  getGoogleClientId: async () => {
+    try {
+      const { data } = await axios.get('/base/productx/auth/google/client-id');
+      return data;
+    } catch (error) {
+      return { 
+        success: false, 
+        message: error.response?.data?.message || '获取 Google Client ID 失败' 
+      };
+    }
+  },
+
+  // 处理 Google One Tap 登录（使用 credential JWT）
+  handleGoogleOneTap: async ({ credential }) => {
+    try {
+      const { data } = await axios.post('/base/productx/auth/google/one-tap', {
+        credential
+      });
+      
+      if (data.success) {
+        const token = data.data;
+        localStorage.setItem('token', token);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        
+        // 登录成功后立即获取用户信息
+        const userInfoResult = await auth.getUserInfo();
+        if (!userInfoResult.success) {
+          return { success: false, message: '获取用户信息失败' };
+        }
+        
+        return { success: true };
+      }
+      return data;
+    } catch (error) {
+      return { 
+        success: false, 
+        message: error.response?.data?.message || 'Google One Tap 登录失败' 
+      };
+    }
   }
 }; 

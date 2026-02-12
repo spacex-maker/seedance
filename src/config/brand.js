@@ -36,6 +36,12 @@ const brandConfig = {
     twitter: 'https://twitter.com/seedance',
     discord: 'https://discord.gg/seedance',
   },
+
+  // Google OAuth 配置
+  google: {
+    // Google Client ID（公开的，可以写在前端）
+    clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID || '930272221836-5tnebscahg9gkdolh9aeqltuf52gek7l.apps.googleusercontent.com',
+  },
 };
 
 export default brandConfig;
