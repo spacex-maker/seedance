@@ -1724,6 +1724,7 @@ export default {
   // 支付方式
   'orders.payment.alipay': '支付宝',
   'orders.payment.wechat': '微信支付',
+  'orders.payment.wechat_pay_xunhu': '微信支付(迅虎)',
   'orders.payment.bank': '银行卡',
   'orders.payment.usdt': 'USDT',
   'orders.payment.creem': 'Creem',

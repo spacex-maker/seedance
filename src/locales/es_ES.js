@@ -1400,6 +1400,7 @@ export default {
   // Métodos de pago
   'orders.payment.alipay': 'Alipay',
   'orders.payment.wechat': 'WeChat Pay',
+  'orders.payment.wechat_pay_xunhu': 'WeChat Pay (Xunhu)',
   'orders.payment.bank': 'Tarjeta bancaria',
   'orders.payment.usdt': 'USDT',
   'orders.payment.creem': 'Creem',

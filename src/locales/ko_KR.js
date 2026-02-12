@@ -1531,6 +1531,7 @@ export default {
   // 결제 방법
   'orders.payment.alipay': 'Alipay',
   'orders.payment.wechat': 'WeChat Pay',
+  'orders.payment.wechat_pay_xunhu': 'WeChat Pay (Xunhu)',
   'orders.payment.bank': '은행 카드',
   'orders.payment.usdt': 'USDT',
   'orders.payment.creem': 'Creem',
