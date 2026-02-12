@@ -1414,10 +1414,18 @@ export default {
   
   // 取引タイプ
   'billing.type.frozen': '資金凍結',
-  'billing.type.aiModelFee': 'モデル呼び出し',
+  'billing.type.aiModelFee': '消費',
+  'billing.type.deposit': 'チャージ',
   'billing.type.recharge': 'チャージ',
+  'billing.type.withdrawal': '出金',
+  'billing.type.transfer': '振込',
   'billing.type.refund': '返金',
+  'billing.type.payment': '支払い',
+  'billing.type.fee': '手数料',
   'billing.type.reward': '報酬',
+  'billing.type.adjustment': '調整',
+  'billing.type.promptMarketPurchase': 'プロンプト購買',
+  'billing.type.promptMarketIncome': 'プロンプト収入',
   'billing.type.all': 'すべてのタイプ',
   
   // 通貨
@@ -1447,6 +1455,10 @@ export default {
   'billing.filter.dateQuick': 'クイック日付',
   'billing.filter.dateCustom': 'カスタム日付',
   'billing.filter.dateTo': 'から',
+  'billing.filter.today': '本日',
+  'billing.filter.thisWeek': '今週',
+  'billing.filter.thisMonth': '今月',
+  'billing.filter.thisYear': '今年',
   'billing.filter.days7': '過去7日間',
   'billing.filter.days30': '過去30日間',
   'billing.filter.days90': '過去3ヶ月',
@@ -1464,6 +1476,7 @@ export default {
   // チャージページ
   'recharge.page.title': 'アカウントチャージ',
   'recharge.page.backLink': '財務センターに戻る',
+  'recharge.page.backToWorkspace': 'ワークスペースに戻る',
   'recharge.balance.title': 'アカウント残高',
   'recharge.balance.refresh': '更新',
   
@@ -1518,6 +1531,7 @@ export default {
   'recharge.message.orderCreateFailed': 'チャージ注文の作成に失敗しました',
   'recharge.message.paymentProcessing': '支払いページを開いています。支払いを完了してください...',
   'recharge.message.popupBlocked': '支払いウィンドウを開けません。ブラウザのポップアップ設定を確認してください',
+  'recharge.message.scanQRToPay': '微信でQRコードをスキャンして支払いを完了してください',
   'recharge.message.paymentUrlError': '支払いリンクの取得に失敗しました',
   'recharge.message.checkoutSessionError': '支払いセッションの作成に失敗しました',
   'recharge.message.paymentError': '支払い処理に失敗しました。後でもう一度お試しください',

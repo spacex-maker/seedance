@@ -1504,9 +1504,17 @@ export default {
   // Transaction Types
   'billing.type.frozen': 'Frozen',
   'billing.type.aiModelFee': 'AI Model Fee',
+  'billing.type.deposit': 'Deposit',
   'billing.type.recharge': 'Recharge',
+  'billing.type.withdrawal': 'Withdrawal',
+  'billing.type.transfer': 'Transfer',
   'billing.type.refund': 'Refund',
+  'billing.type.payment': 'Payment',
+  'billing.type.fee': 'Fee',
   'billing.type.reward': 'Reward',
+  'billing.type.adjustment': 'Adjustment',
+  'billing.type.promptMarketPurchase': 'Prompt Market Purchase',
+  'billing.type.promptMarketIncome': 'Prompt Market Income',
   'billing.type.all': 'All Types',
   
   // Currencies
@@ -1536,6 +1544,10 @@ export default {
   'billing.filter.dateQuick': 'Quick Date',
   'billing.filter.dateCustom': 'Custom Date',
   'billing.filter.dateTo': 'to',
+  'billing.filter.today': 'Today',
+  'billing.filter.thisWeek': 'This Week',
+  'billing.filter.thisMonth': 'This Month',
+  'billing.filter.thisYear': 'This Year',
   'billing.filter.days7': 'Last 7 Days',
   'billing.filter.days30': 'Last 30 Days',
   'billing.filter.days90': 'Last 3 Months',
@@ -1553,6 +1565,7 @@ export default {
   // Recharge Page
   'recharge.page.title': 'Account Recharge',
   'recharge.page.backLink': 'Back to Billing',
+  'recharge.page.backToWorkspace': 'Back to Workspace',
   'recharge.balance.title': 'Account Balance',
   'recharge.balance.refresh': 'Refresh',
   
@@ -1607,6 +1620,7 @@ export default {
   'recharge.message.orderCreateFailed': 'Failed to create recharge order',
   'recharge.message.paymentProcessing': 'Opening payment page, please complete payment...',
   'recharge.message.popupBlocked': 'Cannot open payment window, please check browser popup settings',
+  'recharge.message.scanQRToPay': 'Please scan the QR code with WeChat to complete payment',
   'recharge.message.paymentUrlError': 'Failed to get payment URL',
   'recharge.message.checkoutSessionError': 'Failed to create payment session',
   'recharge.message.paymentError': 'Payment processing failed, please try again later',

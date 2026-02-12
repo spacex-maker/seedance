@@ -1559,10 +1559,18 @@ export default {
   
   // 交易类型
   'billing.type.frozen': '资金冻结',
-  'billing.type.aiModelFee': '模型调用',
+  'billing.type.aiModelFee': '消费',
+  'billing.type.deposit': '充值',
   'billing.type.recharge': '充值',
+  'billing.type.withdrawal': '提现',
+  'billing.type.transfer': '转账',
   'billing.type.refund': '退款',
+  'billing.type.payment': '支付',
+  'billing.type.fee': '手续费',
   'billing.type.reward': '奖励',
+  'billing.type.adjustment': '调整',
+  'billing.type.promptMarketPurchase': '提示词购买',
+  'billing.type.promptMarketIncome': '提示词收入',
   'billing.type.all': '全部类型',
   
   // 币种
@@ -1592,6 +1600,10 @@ export default {
   'billing.filter.dateQuick': '快捷时间',
   'billing.filter.dateCustom': '自定义日期',
   'billing.filter.dateTo': '至',
+  'billing.filter.today': '本日',
+  'billing.filter.thisWeek': '本周',
+  'billing.filter.thisMonth': '本月',
+  'billing.filter.thisYear': '本年',
   'billing.filter.days7': '近7天',
   'billing.filter.days30': '近30天',
   'billing.filter.days90': '近3个月',
@@ -1609,6 +1621,7 @@ export default {
   // Recharge 充值页面
   'recharge.page.title': '账户充值',
   'recharge.page.backLink': '返回财务中心',
+  'recharge.page.backToWorkspace': '返回工作台',
   'recharge.balance.title': '账户余额',
   'recharge.balance.refresh': '刷新',
   
@@ -1663,6 +1676,7 @@ export default {
   'recharge.message.orderCreateFailed': '创建充值订单失败',
   'recharge.message.paymentProcessing': '正在打开支付页面，请完成支付...',
   'recharge.message.popupBlocked': '无法打开支付窗口，请检查浏览器弹窗设置',
+  'recharge.message.scanQRToPay': '请使用微信扫描二维码完成支付',
   'recharge.message.paymentUrlError': '获取支付链接失败',
   'recharge.message.checkoutSessionError': '创建支付会话失败',
   'recharge.message.paymentError': '支付处理失败，请稍后重试',
