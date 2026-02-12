@@ -8,6 +8,7 @@ import SimpleHeader from "components/headers/simple";
 import instance from "api/axios";
 import { auth } from "api/auth";
 import { payment } from "api/payment";
+import { Analytics } from "utils/analytics";
 import {
   Button,
   ConfigProvider,
@@ -636,6 +637,7 @@ const RechargeContent = ({ embedded = false }) => {
   const [wechatQrUrl, setWechatQrUrl] = useState('');
   const [wechatPayModalVisible, setWechatPayModalVisible] = useState(false);
   const orderPollingIntervalRef = useRef(null);
+  const pendingOrderRef = useRef(null); // GA4 支付成功时用：{ orderNo, value, currency }
 
   // --- 保持所有业务逻辑 Effect 和 Function 不变 ---
 
@@ -902,6 +904,11 @@ const RechargeContent = ({ embedded = false }) => {
             orderPollingIntervalRef.current = null;
             setCurrentOrderNo(null);
             setWechatPayModalVisible(false);
+            const pending = pendingOrderRef.current;
+            if (pending && pending.orderNo === orderNo) {
+              Analytics.trackPurchaseSuccess(orderNo, pending.value, pending.currency || 'CNY', 'Recharge');
+              pendingOrderRef.current = null;
+            }
             message.success(intl.formatMessage({ id: 'recharge.message.paymentSuccess' }));
             fetchBalance();
           } else if (status === 'CANCELLED' || status === 'FAILED' || status === 'EXPIRED') {
@@ -1023,6 +1030,9 @@ const RechargeContent = ({ embedded = false }) => {
       if (orderResult.success && orderResult.data) {
         const { orderNo, payUrl, status } = orderResult.data;
         setCurrentOrderNo(orderNo);
+        pendingOrderRef.current = { orderNo, value: finalAmount, currency: coinType };
+        const planLabel = selectedCnyPackage?.name || selectedCreemProduct?.productName || `Recharge_${finalAmount}_${coinType}`;
+        Analytics.trackCheckoutStart(planLabel, finalAmount, coinType);
         message.success(intl.formatMessage({ id: 'recharge.message.orderCreated' }));
         if (payMethod === 'creem') {
           await handleCreemPayment(orderNo);

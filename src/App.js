@@ -6,6 +6,7 @@ import { ConfigProvider, theme, message } from 'antd';
 import { ThemeProvider } from 'styled-components';
 import { LocaleProvider } from './contexts/LocaleContext';
 import { Helmet } from 'react-helmet';
+import { initGA4, sendPageView } from './utils/analytics';
 import SeedanceVideoPage from './pages/SeedanceVideoPage';
 import brandConfig from './config/brand';
 import ProfilePage from './pages/Profile';
@@ -38,6 +39,9 @@ const localeMap = {
   ko_KR: koKR,
 };
 
+// GA4 初始化（尽早执行，保证首屏 PV 可发）
+initGA4();
+
 // 路由守卫组件
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('token');
@@ -47,15 +51,20 @@ const PrivateRoute = ({ children }) => {
 // 百度统计路由跟踪组件
 const BaiduAnalyticsTracker = () => {
   const location = useLocation();
-
   useEffect(() => {
-    // 确保百度统计已加载
     if (typeof window !== 'undefined' && window._hmt) {
-      // 跟踪页面浏览
       window._hmt.push(['_trackPageview', location.pathname + location.search]);
     }
   }, [location]);
+  return null;
+};
 
+// GA4 路由跟踪（SPA 手发 pageview）
+const GA4Tracker = () => {
+  const location = useLocation();
+  useEffect(() => {
+    sendPageView(location.pathname, location.search);
+  }, [location]);
   return null;
 };
 
@@ -261,6 +270,7 @@ export default function App() {
           <GlobalStyles />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <BaiduAnalyticsTracker />
+            <GA4Tracker />
             <Routes>
               <Route path="/" element={<SeedanceVideoPage />} />
               {/* 认证页面 */}
