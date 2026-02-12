@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { Button } from 'antd';
 import { BellOutlined } from '@ant-design/icons';
+import { useIntl } from 'react-intl';
 
 const STORAGE_KEY = 'seedance_announcement_banner_closed';
 
@@ -32,6 +33,7 @@ const FloatButton = styled(Button)`
  */
 const ReopenButton = () => {
   const theme = useContext(ThemeContext);
+  const intl = useIntl();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -73,7 +75,10 @@ const ReopenButton = () => {
         border: 'none',
       }}
     >
-      查看 Seedance2 公告
+      {intl.formatMessage({
+        id: 'announcement.reopen.viewAnnouncement',
+        defaultMessage: '查看 Seedance2 公告',
+      })}
     </FloatButton>
   );
 };

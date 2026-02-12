@@ -642,6 +642,7 @@ export default {
   'create.i2v.result': '生成比較',
   'create.i2v.empty': '生成結果と元画像の比較がここに表示されます',
   'create.generate.i2v': '動画生成を開始',
+  'create.compliance.notice': 'Content Compliance Notice',
   'create.prompt.i2v.placeholder': '例：画像内の人物を歩かせ、背景の葉を風に揺らす...',
   'create.prompt.enhance.tooltip': 'AIでプロンプトを豊かにし、説明をより詳細で生き生きとさせます',
   'create.prompt.enhance': 'AI強化',
@@ -1190,6 +1191,7 @@ export default {
   'footer.resources.orders': '注文センター',
   'footer.copyright': '© {year} {brand}. 全著作権所有。',
   'footer.description': '本プラットフォームはAI生成サービスを提供しています',
+  'footer.disclaimer': '免責事項：本サイト（Seedance）は第三者チームが独立運営しており、ByteDance または Volcano Engine の公式プラットフォームではありません。本サイトは火山引擎のAPIで構築されています。ドメイン seedance2.cn はアクセス窓口であり、上記ブランドと直接の関連はありません。',
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': '仕様比較と業界インサイトを備えたグローバル人型ロボットデータベース',
   'footer.openRobotX.visit': 'Open Robot X を訪問',
@@ -1352,7 +1354,10 @@ export default {
   'announcement.seedanceV2.date': '予定リリース日：2025年3月',
   'announcement.reopen.button': '新モデル',
   'announcement.reopen.tooltip': '新モデル告知を表示',
+  'announcement.reopen.viewAnnouncement': 'Seedance2 告知を見る',
+  'announcement.disclaimer': '免責事項：本サイト（Seedance）は第三者チームが独立運営しており、ByteDance（バイトダンス）またはVolcano Engine（火山引擎）の公式プラットフォームではありません。動画生成機能はVolcano Engineにより提供されています。ドメイン seedance2.cn は当サイトのアクセス窓口であり、上記企業ブランドと直接の関連はありません。',
   // ホームヒーローセクション
+  'home.poweredBy': '動画生成の中核技術は Volcano Engine（火山引擎）により提供されています。',
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'AIがすべてを創造する魔法のプラットフォーム',
   'home.hero.description': 'コンセプトから実体へ、想像から現実へ。AIであらゆるものをデザインし生成——テキストから画像、画像から動画、アイデアを現実に。あなたのすべての思考が、ここで目に見える作品になります。',
@@ -1414,10 +1419,18 @@ export default {
   
   // 取引タイプ
   'billing.type.frozen': '資金凍結',
-  'billing.type.aiModelFee': 'モデル呼び出し',
+  'billing.type.aiModelFee': '消費',
+  'billing.type.deposit': 'チャージ',
   'billing.type.recharge': 'チャージ',
+  'billing.type.withdrawal': '出金',
+  'billing.type.transfer': '振込',
   'billing.type.refund': '返金',
+  'billing.type.payment': '支払い',
+  'billing.type.fee': '手数料',
   'billing.type.reward': '報酬',
+  'billing.type.adjustment': '調整',
+  'billing.type.promptMarketPurchase': 'プロンプト購買',
+  'billing.type.promptMarketIncome': 'プロンプト収入',
   'billing.type.all': 'すべてのタイプ',
   
   // 通貨
@@ -1447,6 +1460,10 @@ export default {
   'billing.filter.dateQuick': 'クイック日付',
   'billing.filter.dateCustom': 'カスタム日付',
   'billing.filter.dateTo': 'から',
+  'billing.filter.today': '本日',
+  'billing.filter.thisWeek': '今週',
+  'billing.filter.thisMonth': '今月',
+  'billing.filter.thisYear': '今年',
   'billing.filter.days7': '過去7日間',
   'billing.filter.days30': '過去30日間',
   'billing.filter.days90': '過去3ヶ月',
@@ -1464,6 +1481,7 @@ export default {
   // チャージページ
   'recharge.page.title': 'アカウントチャージ',
   'recharge.page.backLink': '財務センターに戻る',
+  'recharge.page.backToWorkspace': 'ワークスペースに戻る',
   'recharge.balance.title': 'アカウント残高',
   'recharge.balance.refresh': '更新',
   
@@ -1471,6 +1489,8 @@ export default {
   'recharge.section.coinType': 'チャージ通貨',
   'recharge.section.paymentMethod': '支払い方法',
   'recharge.section.amount': 'チャージ金額',
+  'recharge.token.base': '基本',
+  'recharge.token.gift': 'プレゼント',
   
   // 注文詳細
   'recharge.order.title': '注文詳細',
@@ -1516,6 +1536,7 @@ export default {
   'recharge.message.orderCreateFailed': 'チャージ注文の作成に失敗しました',
   'recharge.message.paymentProcessing': '支払いページを開いています。支払いを完了してください...',
   'recharge.message.popupBlocked': '支払いウィンドウを開けません。ブラウザのポップアップ設定を確認してください',
+  'recharge.message.scanQRToPay': '微信でQRコードをスキャンして支払いを完了してください',
   'recharge.message.paymentUrlError': '支払いリンクの取得に失敗しました',
   'recharge.message.checkoutSessionError': '支払いセッションの作成に失敗しました',
   'recharge.message.paymentError': '支払い処理に失敗しました。後でもう一度お試しください',
@@ -1563,6 +1584,7 @@ export default {
   // 支払方法
   'orders.payment.alipay': 'Alipay',
   'orders.payment.wechat': 'WeChat Pay',
+  'orders.payment.wechat_pay_xunhu': 'WeChat Pay (Xunhu)',
   'orders.payment.bank': '銀行カード',
   'orders.payment.usdt': 'USDT',
   'orders.payment.creem': 'Creem',

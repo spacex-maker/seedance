@@ -640,6 +640,7 @@ export default {
   'create.i2v.result': 'Generation Comparison',
   'create.i2v.empty': 'Generated results and original image comparison will be displayed here',
   'create.generate.i2v': 'Start Generating Video',
+  'create.compliance.notice': 'Content Compliance Notice',
   'create.prompt.i2v.placeholder': 'e.g., Make the person in the image start walking, leaves in the background swaying in the wind...',
   'create.prompt.enhance.tooltip': 'AI enrich prompt to make the description more detailed and vivid',
   'create.prompt.enhance': 'AI Enrich',
@@ -1239,6 +1240,7 @@ export default {
   'footer.resources.orders': 'Order Center',
   'footer.copyright': '© {year} {brand}. All rights reserved.',
   'footer.description': 'This platform provides AI generation services',
+  'footer.disclaimer': 'Disclaimer: This site (Seedance) is independently operated by a third party and is not an official platform of ByteDance or Volcano Engine. This site is built using Volcano Engine APIs. The domain seedance2.cn is only an access point and is not affiliated with the above brands.',
   'footer.openRobotX.title': 'Open Robot X',
   'footer.openRobotX.description': 'Global humanoid robotics database with specs comparison and industry insights',
   'footer.openRobotX.visit': 'Visit Open Robot X',
@@ -1401,7 +1403,10 @@ export default {
   'announcement.seedanceV2.date': 'Expected Launch: March 2025',
   'announcement.reopen.button': 'New Model',
   'announcement.reopen.tooltip': 'View new model announcement',
+  'announcement.reopen.viewAnnouncement': 'View Seedance2 announcement',
+  'announcement.disclaimer': 'Disclaimer: This site (Seedance) is independently operated by a third party and is not an official platform of ByteDance or Volcano Engine. Video generation is powered by Volcano Engine. The domain seedance2.cn is only an access point and is not affiliated with the above brands.',
   // Home Hero Section
+  'home.poweredBy': 'Video generation is powered by Volcano Engine.',
   'home.hero.badge': 'Introducing the new Workflow',
   'home.hero.title': 'Seedance',
   'home.hero.subtitle': 'Where AI Creates Everything',
@@ -1504,9 +1509,17 @@ export default {
   // Transaction Types
   'billing.type.frozen': 'Frozen',
   'billing.type.aiModelFee': 'AI Model Fee',
+  'billing.type.deposit': 'Deposit',
   'billing.type.recharge': 'Recharge',
+  'billing.type.withdrawal': 'Withdrawal',
+  'billing.type.transfer': 'Transfer',
   'billing.type.refund': 'Refund',
+  'billing.type.payment': 'Payment',
+  'billing.type.fee': 'Fee',
   'billing.type.reward': 'Reward',
+  'billing.type.adjustment': 'Adjustment',
+  'billing.type.promptMarketPurchase': 'Prompt Market Purchase',
+  'billing.type.promptMarketIncome': 'Prompt Market Income',
   'billing.type.all': 'All Types',
   
   // Currencies
@@ -1536,6 +1549,10 @@ export default {
   'billing.filter.dateQuick': 'Quick Date',
   'billing.filter.dateCustom': 'Custom Date',
   'billing.filter.dateTo': 'to',
+  'billing.filter.today': 'Today',
+  'billing.filter.thisWeek': 'This Week',
+  'billing.filter.thisMonth': 'This Month',
+  'billing.filter.thisYear': 'This Year',
   'billing.filter.days7': 'Last 7 Days',
   'billing.filter.days30': 'Last 30 Days',
   'billing.filter.days90': 'Last 3 Months',
@@ -1553,6 +1570,7 @@ export default {
   // Recharge Page
   'recharge.page.title': 'Account Recharge',
   'recharge.page.backLink': 'Back to Billing',
+  'recharge.page.backToWorkspace': 'Back to Workspace',
   'recharge.balance.title': 'Account Balance',
   'recharge.balance.refresh': 'Refresh',
   
@@ -1560,6 +1578,8 @@ export default {
   'recharge.section.coinType': 'Currency Type',
   'recharge.section.paymentMethod': 'Payment Method',
   'recharge.section.amount': 'Recharge Amount',
+  'recharge.token.base': 'Base',
+  'recharge.token.gift': 'Gift',
   
   // Order Details
   'recharge.order.title': 'Order Details',
@@ -1605,6 +1625,7 @@ export default {
   'recharge.message.orderCreateFailed': 'Failed to create recharge order',
   'recharge.message.paymentProcessing': 'Opening payment page, please complete payment...',
   'recharge.message.popupBlocked': 'Cannot open payment window, please check browser popup settings',
+  'recharge.message.scanQRToPay': 'Please scan the QR code with WeChat to complete payment',
   'recharge.message.paymentUrlError': 'Failed to get payment URL',
   'recharge.message.checkoutSessionError': 'Failed to create payment session',
   'recharge.message.paymentError': 'Payment processing failed, please try again later',
@@ -1652,6 +1673,7 @@ export default {
   // Payment Methods
   'orders.payment.alipay': 'Alipay',
   'orders.payment.wechat': 'WeChat Pay',
+  'orders.payment.wechat_pay_xunhu': 'WeChat Pay (Xunhu)',
   'orders.payment.bank': 'Bank Card',
   'orders.payment.usdt': 'USDT',
   'orders.payment.creem': 'Creem',

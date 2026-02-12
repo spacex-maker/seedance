@@ -32,6 +32,7 @@ import {
 } from '@ant-design/icons';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
+import { useLocale } from 'contexts/LocaleContext';
 import instance from 'api/axios';
 import { VideoResult, Model, GenerationTask, GenerationTaskPageResponse } from './types';
 import { 
@@ -77,6 +78,7 @@ export interface ImageToVideoProps {
 const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => {
   const intl = useIntl();
   const navigate = useNavigate();
+  const { locale } = useLocale();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [generatedVideo, setGeneratedVideo] = useState<VideoResult | null>(null);
@@ -1716,6 +1718,87 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
                         ) : null;
                       }}
                     </Form.Item>
+                    
+                    {/* 合规提示 */}
+                    <div style={{ marginTop: 12, textAlign: 'center' }}>
+                      <Tooltip
+                        title={
+                          <div style={{ maxWidth: 400, lineHeight: 1.6 }}>
+                            {locale && String(locale).toLowerCase().startsWith('zh') ? (
+                              <>
+                                <div style={{ marginBottom: 8, fontWeight: 600 }}>内容合规提示</div>
+                                <div style={{ fontSize: 12 }}>
+                                  系统会在生成视频前对提示词进行 AI 合规校验，以下内容将被拒绝：
+                                </div>
+                                <ul style={{ margin: '8px 0', paddingLeft: 20, fontSize: 12 }}>
+                                  <li>非法内容（暴力、恐怖主义、非法活动）</li>
+                                  <li>有害内容（仇恨言论、歧视、骚扰）</li>
+                                  <li>成人/色情内容（明确的性内容、裸露）</li>
+                                  <li>隐私侵犯（个人信息、未经同意的内容）</li>
+                                  <li>版权侵犯（特定受版权保护的角色、品牌）</li>
+                                  <li>危险内容（自残、有害指令）</li>
+                                </ul>
+                                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', marginTop: 8 }}>
+                                  请确保您的提示词符合平台规范，避免生成违规内容。
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <div style={{ marginBottom: 8, fontWeight: 600 }}>Content Compliance Notice</div>
+                                <div style={{ fontSize: 12 }}>
+                                  The system will perform AI compliance checks on your prompt before generating the video. The following content will be rejected:
+                                </div>
+                                <ul style={{ margin: '8px 0', paddingLeft: 20, fontSize: 12 }}>
+                                  <li>Illegal content (violence, terrorism, illegal activities)</li>
+                                  <li>Harmful content (hate speech, discrimination, harassment)</li>
+                                  <li>Adult/sexual content (explicit sexual content, nudity)</li>
+                                  <li>Privacy violations (personal information, non-consensual content)</li>
+                                  <li>Copyright violations (specific copyrighted characters, brands)</li>
+                                  <li>Dangerous content (self-harm, harmful instructions)</li>
+                                </ul>
+                                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', marginTop: 8 }}>
+                                  Please ensure your prompt complies with platform guidelines to avoid generating prohibited content.
+                                </div>
+                              </>
+                            )}
+                          </div>
+                        }
+                        placement="top"
+                        overlayStyle={{ maxWidth: 450 }}
+                      >
+                        <div 
+                          style={{ 
+                            display: 'inline-flex', 
+                            alignItems: 'center', 
+                            gap: 6, 
+                            cursor: 'pointer',
+                            color: '#8c8c8c',
+                            fontSize: 12,
+                            transition: 'color 0.2s'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.color = '#1890ff';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.color = '#8c8c8c';
+                          }}
+                        >
+                          <InfoCircleOutlined style={{ fontSize: 14 }} />
+                          <span>
+                            {locale && String(locale).toLowerCase().startsWith('zh') 
+                              ? intl.formatMessage({ 
+                                  id: 'create.compliance.notice', 
+                                  defaultMessage: '内容合规提示' 
+                                })
+                              : intl.formatMessage({ 
+                                  id: 'create.compliance.notice', 
+                                  defaultMessage: 'Content Compliance Notice' 
+                                })
+                            }
+                          </span>
+                        </div>
+                      </Tooltip>
+                    </div>
                   </div>
                 </Form.Item>
               </Form>

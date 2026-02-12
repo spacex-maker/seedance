@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
-import { Layout } from 'antd';
+import { Layout, Typography } from 'antd';
+import { Helmet } from 'react-helmet';
 import styled, { ThemeContext } from 'styled-components';
-import SEO, { SEOConfigs } from 'components/SEO';
+import { useIntl } from 'react-intl';
 import SimpleHeader from 'components/headers/simple';
 import SeedanceVideo from 'pages/Workspace/Create/components/SeedanceVideo';
 import FooterSection from 'pages/Home/components/FooterSection';
 import AnnouncementBanner from 'components/AnnouncementBanner';
 import ReopenAnnouncementButton from 'components/AnnouncementBanner/ReopenButton';
+import brandConfig from 'config/brand';
 
 const { Content } = Layout;
 
@@ -86,20 +88,35 @@ const PageWrapper = styled(Layout)`
   z-index: 1;
 `;
 
+const PoweredByWrap = styled.div`
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: ${props => props.theme.mode === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.45)'};
+  a {
+    color: ${props => props.theme.mode === 'dark' ? 'rgba(255, 255, 255, 0.65)' : 'rgba(0, 0, 0, 0.55)'};
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+`;
+
 /**
- * Seedance2 图生视频 - 独立整页，无侧栏
+ * Seedance 图生视频 - 独立整页，无侧栏
  * 路由：/seedance-video
  */
 const SeedanceVideoPage = () => {
   const theme = useContext(ThemeContext);
-  
+  const intl = useIntl();
+
   return (
     <>
-      <SEO
-        {...SEOConfigs.home}
-        description="字节豆包 Seedance2 图生视频，一站式 AI 图生视频平台，专业图生视频与文生视频服务。"
-        keywords="Seedance2, 图生视频, 文生视频, 字节豆包, AI视频, 图生视频平台"
-      />
+      <Helmet>
+        <title>{brandConfig.productNameFull} - {brandConfig.name}</title>
+        <meta name="description" content={`字节豆包 ${brandConfig.productName} 1.5 图生视频`} />
+      </Helmet>
       <VideoBackdrop theme={theme}>
         <video
           src={BACKGROUND_VIDEO_URL}
@@ -115,6 +132,16 @@ const SeedanceVideoPage = () => {
         <ReopenAnnouncementButton />
         <PageContent>
           <AnnouncementBanner />
+          <PoweredByWrap theme={theme}>
+            <Typography.Text type="secondary">
+              Powered by{' '}
+              <a href="https://www.volcengine.com" target="_blank" rel="noopener noreferrer">Volcano Engine</a>
+              {' — '}
+              {intl.formatMessage(
+                { id: 'home.poweredBy', defaultMessage: '本站视频生成核心技术由 火山引擎 (Volcano Engine) 提供强力驱动' }
+              )}
+            </Typography.Text>
+          </PoweredByWrap>
           <SeedanceVideo />
         </PageContent>
         <FooterSection />

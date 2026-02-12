@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import 'antd/dist/reset.css';
 import GlobalStyles from './styles/GlobalStyles';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { ConfigProvider, theme, message } from 'antd';
 import { ThemeProvider } from 'styled-components';
 import { LocaleProvider } from './contexts/LocaleContext';
@@ -42,6 +42,21 @@ const localeMap = {
 const PrivateRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem('token');
   return isAuthenticated ? children : <Navigate to="/login" />;
+};
+
+// 百度统计路由跟踪组件
+const BaiduAnalyticsTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // 确保百度统计已加载
+    if (typeof window !== 'undefined' && window._hmt) {
+      // 跟踪页面浏览
+      window._hmt.push(['_trackPageview', location.pathname + location.search]);
+    }
+  }, [location]);
+
+  return null;
 };
 
 export default function App() {
@@ -245,6 +260,7 @@ export default function App() {
         >
           <GlobalStyles />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+            <BaiduAnalyticsTracker />
             <Routes>
               <Route path="/" element={<SeedanceVideoPage />} />
               {/* 认证页面 */}
