@@ -146,34 +146,68 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
         const response = await instance.get('/productx/sa-ai-models/enabled/by-type', {
           params: { modelType: 'i2v' }
         });
-        if (response.data.success && response.data.data && response.data.data.length > 0) {
-          let list = response.data.data as Model[];
+        
+        // 检查 API 响应是否成功
+        if (response.data && response.data.success) {
+          // API 调用成功，处理数据
+          const rawList = (response.data.data || []) as Model[];
+          let list = rawList;
+          
+          // 如果是 Seedance 页面，过滤模型
           if (seedancePage) {
-            list = list.filter((m: Model) => (m.modelCode || '').toLowerCase().includes('seedance'));
+            list = rawList.filter((m: Model) => (m.modelCode || '').toLowerCase().includes('seedance'));
           }
+          
+          // 设置模型列表（即使为空也设置，表示加载成功）
           setModels(list);
+          
+          // 如果有模型，选择第一个
           const firstModel = list[0];
           if (firstModel) {
             setSelectedModel(firstModel);
             form.setFieldsValue({ modelId: firstModel.id });
             updateFormByModel(firstModel);
           }
-          if (seedancePage && list.length === 0) {
+          
+          // 只在特定情况下显示提示：
+          // 1. Seedance 页面且过滤后没有模型
+          // 2. 普通页面且原始数据为空（不是过滤导致的）
+          if (seedancePage && list.length === 0 && rawList.length > 0) {
+            // Seedance 页面，有模型但过滤后为空
             message.warning(intl.formatMessage({ id: 'create.seedance.noModel', defaultMessage: '暂无可用的 Seedance 模型，请先在后台配置' }));
-          } else if (!firstModel && !seedancePage) {
-            message.warning(intl.formatMessage({ id: 'create.model.loadFailed', defaultMessage: '加载模型列表失败' }));
+          } else if (!seedancePage && rawList.length === 0) {
+            // 普通页面，原始数据为空
+            message.warning(intl.formatMessage({ id: 'create.model.noModel', defaultMessage: '暂无可用的模型' }));
           }
+          // 如果模型加载成功（即使过滤后为空），不显示错误
         } else {
-          if (!seedancePage) {
-            message.warning(intl.formatMessage({ id: 'create.model.loadFailed', defaultMessage: '加载模型列表失败' }));
-          }
+          // API 返回失败状态
+          console.warn('模型列表 API 返回失败:', response.data);
+          // 不显示错误，因为可能是后端业务逻辑返回的失败，但不算错误
         }
       } catch (error: any) {
+        // 网络错误或请求异常
         console.error('获取模型列表失败:', error);
-        message.error(intl.formatMessage({ 
-          id: 'create.model.loadFailed', 
-          defaultMessage: '加载模型列表失败' 
-        }));
+        // 只在真正的网络错误时显示错误提示
+        if (error.response) {
+          // 服务器返回了错误响应
+          const status = error.response.status;
+          if (status >= 500) {
+            // 服务器错误才显示错误提示
+            message.error(intl.formatMessage({ 
+              id: 'create.model.loadFailed', 
+              defaultMessage: '加载模型列表失败，请稍后重试' 
+            }));
+          }
+          // 其他错误（如 401, 403, 404）不显示，因为可能是正常的业务逻辑
+        } else if (error.request) {
+          // 请求发出但没有收到响应（网络问题）
+          message.error(intl.formatMessage({ 
+            id: 'create.model.loadFailed', 
+            defaultMessage: '网络连接失败，请检查网络后重试' 
+          }));
+        }
+        // 其他错误（如请求配置错误）不显示
       } finally {
         setModelsLoading(false);
       }

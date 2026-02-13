@@ -414,6 +414,7 @@ export default {
   'create.model.feedback.tooltip': '¿Tiene problemas? Haga clic para enviar comentarios',
   'create.model.loading': 'Cargando modelos...',
   'create.model.loadFailed': 'Error al cargar la lista de modelos',
+  'create.model.noModel': 'No hay modelos disponibles',
   'create.model.family.select': 'Seleccionar Familia de Modelos',
   'create.model.family.select.placeholder': 'Por favor seleccione una familia de modelos',
   'create.model.family.loadFailed': 'Error al cargar la lista de familias de modelos',

@@ -434,6 +434,7 @@ export default {
   'create.model.select': 'اختر النموذج',
   'create.model.loading': 'جارٍ تحميل النماذج...',
   'create.model.loadFailed': 'فشل تحميل قائمة النماذج',
+  'create.model.noModel': 'لا توجد نماذج متاحة',
   'create.model.family.select': 'اختر عائلة النموذج',
   'create.model.family.select.placeholder': 'يرجى اختيار عائلة النموذج',
   'create.model.family.loadFailed': 'فشل تحميل قائمة عائلات النماذج',

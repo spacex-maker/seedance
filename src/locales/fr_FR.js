@@ -505,6 +505,7 @@ export default {
   'create.model.feedback.tooltip': 'Des problèmes ? Cliquez pour donner votre avis',
   'create.model.loading': 'Chargement des modèles...',
   'create.model.loadFailed': 'Échec du chargement de la liste des modèles',
+  'create.model.noModel': 'Aucun modèle disponible',
   'create.model.family.select': 'Sélectionner une Famille de Modèles',
   'create.model.family.select.placeholder': 'Veuillez sélectionner une famille de modèles',
   'create.model.family.loadFailed': 'Échec du chargement de la liste des familles de modèles',

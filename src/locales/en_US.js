@@ -514,6 +514,7 @@ export default {
   'create.model.select.image.placeholder': 'Please select an image generation model',
   'create.model.loading': 'Loading models...',
   'create.model.loadFailed': 'Failed to load model list',
+  'create.model.noModel': 'No available models',
   'create.model.family.select': 'Select Model Family',
   'create.model.family.select.placeholder': 'Please select a model family',
   'create.model.family.loadFailed': 'Failed to load model families',

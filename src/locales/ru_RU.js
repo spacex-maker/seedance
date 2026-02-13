@@ -422,6 +422,7 @@ export default {
   'create.model.feedback.tooltip': 'Есть проблемы? Нажмите, чтобы оставить отзыв',
   'create.model.loading': 'Загрузка моделей...',
   'create.model.loadFailed': 'Не удалось загрузить список моделей',
+  'create.model.noModel': 'Нет доступных моделей',
   'create.model.family.select': 'Выбрать Семейство Моделей',
   'create.model.family.select.placeholder': 'Пожалуйста, выберите семейство моделей',
   'create.model.family.loadFailed': 'Не удалось загрузить список семейств моделей',

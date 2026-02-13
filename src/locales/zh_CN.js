@@ -560,6 +560,7 @@ export default {
   'create.model.select.image.placeholder': '请选择要使用的图片生成模型',
   'create.model.loading': '加载模型中...',
   'create.model.loadFailed': '加载模型列表失败',
+  'create.model.noModel': '暂无可用的模型',
   'create.model.family.select': '选择模型家族',
   'create.model.family.select.placeholder': '请选择模型家族',
   'create.model.family.loadFailed': '加载模型家族列表失败',

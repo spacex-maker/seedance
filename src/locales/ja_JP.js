@@ -510,6 +510,7 @@ export default {
   'create.model.feedback.tooltip': '問題がありますか？クリックしてフィードバック',
   'create.model.loading': 'モデルを読み込み中...',
   'create.model.loadFailed': 'モデルリストの読み込みに失敗しました',
+  'create.model.noModel': '利用可能なモデルがありません',
   'create.model.family.select': 'モデルファミリーを選択',
   'create.model.family.select.placeholder': 'モデルファミリーを選択してください',
   'create.model.family.loadFailed': 'モデルファミリーリストの読み込みに失敗しました',

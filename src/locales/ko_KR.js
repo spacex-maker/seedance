@@ -490,6 +490,7 @@ export default {
   'create.model.feedback.tooltip': '문제가 있으신가요? 클릭하여 피드백 제공',
   'create.model.loading': '모델 로딩 중...',
   'create.model.loadFailed': '모델 목록 로드 실패',
+  'create.model.noModel': '사용 가능한 모델 없음',
   'create.model.family.select': '모델 패밀리 선택',
   'create.model.family.select.placeholder': '모델 패밀리를 선택하세요',
   'create.model.family.loadFailed': '모델 패밀리 목록 로드 실패',
