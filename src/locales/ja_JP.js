@@ -1557,6 +1557,13 @@ export default {
   'recharge.message.queryOrderError': '注文ステータスの照会に失敗しました',
   'recharge.message.rechargeError': 'チャージリクエストに失敗しました。後でもう一度お試しください',
 
+  // チャージ成功ページ
+  'recharge.success.title': '支払い完了',
+  'recharge.success.desc': '残高が反映されました。創作を始めましょう',
+  'recharge.success.orderId': '注文番号',
+  'recharge.success.goCreate': '創作を始める',
+  'recharge.success.dashboard': '請求に戻る',
+
   // 注文ページ
   'orders.title': '注文履歴',
   'orders.subtitle': 'すべてのチャージ注文記録とステータスを表示',

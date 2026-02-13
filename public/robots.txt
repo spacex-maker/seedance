@@ -1,5 +1,4 @@
-# Seedance
-# https://seedance.example.com
+# Seedance2 - https://seedance2.cn
 
 # 允许所有搜索引擎爬虫
 User-agent: *
@@ -14,4 +13,4 @@ Disallow: /*?*token=
 Disallow: /*?*password=
 
 # Sitemap 位置
-Sitemap: https://seedance.example.com/sitemap.xml
+Sitemap: https://seedance2.cn/sitemap.xml

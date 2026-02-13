@@ -1,3 +1,7 @@
 [build]
 command = "npm run build"
 publish = "build/"
+
+# 预渲染（react-snap）需要 Puppeteer/Chromium，由插件在构建环境安装
+[[plugins]]
+package = "netlify-plugin-chromium"

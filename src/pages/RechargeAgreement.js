@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import SimpleHeader from "components/headers/simple";
+import SEO, { SEOConfigs } from "components/SEO";
 import { ConfigProvider, theme, Button } from "antd";
 import { FileTextOutlined, ArrowLeftOutlined, WalletOutlined } from "@ant-design/icons";
 import { useIntl } from 'react-intl';
+import { base } from "api/base";
 
 // ==========================================
 // 1. 样式系统 (Styled System)
@@ -227,9 +229,21 @@ const RechargeAgreementContent = () => {
   const { token } = theme.useToken();
   const navigate = useNavigate();
   const intl = useIntl();
+  const [officialEmail, setOfficialEmail] = useState('support@soramv.com');
+
+  useEffect(() => {
+    const fetchOfficialEmail = async () => {
+      const result = await base.getOfficialEmail();
+      if (result.success && result.data) {
+        setOfficialEmail(result.data);
+      }
+    };
+    fetchOfficialEmail();
+  }, []);
 
   return (
     <PageLayout $token={token}>
+      <SEO {...SEOConfigs.rechargeAgreement} />
       <SimpleHeader />
       
       <ContentContainer
@@ -399,7 +413,7 @@ const RechargeAgreementContent = () => {
               })}
             </p>
             <ul>
-              <li>{intl.formatMessage({ id: 'rechargeAgreement.section8.contact1', defaultMessage: '客服邮箱：support@example.com' })}</li>
+              <li>{intl.formatMessage({ id: 'rechargeAgreement.section8.contact1', defaultMessage: '客服邮箱：{email}' }, { email: officialEmail })}</li>
               <li>{intl.formatMessage({ id: 'rechargeAgreement.section8.contact2', defaultMessage: '在线客服：工作日 9:00-18:00' })}</li>
               <li>{intl.formatMessage({ id: 'rechargeAgreement.section8.contact3', defaultMessage: '帮助中心：查看常见问题' })}</li>
             </ul>

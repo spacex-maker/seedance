@@ -5,6 +5,7 @@ import { useIntl } from "react-intl";
 import { useNavigate } from "react-router-dom";
 import SimpleHeader from "components/headers/simple";
 import FooterSection from "../Home/components/FooterSection";
+import SEO, { SEOConfigs } from "components/SEO";
 import { base } from "api/base";
 import axios from "api/axios";
 import {
@@ -388,6 +389,7 @@ const FeedbackContent = () => {
 
   return (
     <PageLayout $token={token}>
+      <SEO {...SEOConfigs.feedback} />
       <SimpleHeader />
 
       <ContentContainer

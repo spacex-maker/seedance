@@ -19,6 +19,34 @@ const DEFAULT_TITLE = brandConfig.seo.defaultTitle;
 const DEFAULT_DESCRIPTION = brandConfig.seo.defaultDescription;
 const DEFAULT_IMAGE = brandConfig.seo.defaultImage;
 const SITE_URL = brandConfig.siteUrl;
+const OG_IMAGE_WIDTH = 1200;
+const OG_IMAGE_HEIGHT = 630;
+
+/** 站点级结构化数据（Organization + WebSite），用于首页 */
+function getWebSiteStructuredData() {
+  const orgId = `${SITE_URL}/#organization`;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': orgId,
+        name: brandConfig.name,
+        url: SITE_URL,
+        logo: `${SITE_URL}/logo192.png`,
+        description: DEFAULT_DESCRIPTION,
+      },
+      {
+        '@type': 'WebSite',
+        name: brandConfig.name,
+        url: SITE_URL,
+        description: DEFAULT_DESCRIPTION,
+        publisher: { '@id': orgId },
+        inLanguage: ['zh-CN', 'en'],
+      },
+    ],
+  };
+}
 
 /**
  * SEO 组件 - 用于各页面动态设置 SEO 相关的 meta 标签
@@ -67,6 +95,8 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={fullImage} />
+      <meta property="og:image:width" content={String(OG_IMAGE_WIDTH)} />
+      <meta property="og:image:height" content={String(OG_IMAGE_HEIGHT)} />
       <meta property="og:url" content={fullUrl} />
       <meta property="og:type" content={type} />
       <meta property="og:locale" content={locale} />
@@ -84,6 +114,12 @@ const SEO: React.FC<SEOProps> = ({
           {JSON.stringify(structuredData)}
         </script>
       )}
+      {/* 首页注入站点级结构化数据，便于搜索引擎理解品牌与站点 */}
+      {url === '/' && !structuredData && (
+        <script type="application/ld+json">
+          {JSON.stringify(getWebSiteStructuredData())}
+        </script>
+      )}
       
       {children}
     </Helmet>
@@ -96,8 +132,8 @@ const SEO: React.FC<SEOProps> = ({
 export const SEOConfigs = {
   home: {
     title: undefined, // 使用默认标题
-    description: `${brandConfig.name} 是一站式 AI 图生视频平台，提供专业的视频生成服务。`,
-    keywords: `${brandConfig.name}, AI创作, 图生视频, 视频生成, AI视频, 图生图`,
+    description: `${brandConfig.name} 是一站式 AI 图生视频平台，基于字节豆包模型，提供专业图生视频与文生视频服务。`,
+    keywords: `${brandConfig.name}, Seedance2, 图生视频, 文生视频, AI图生视频, 视频生成, 字节豆包, AI视频`,
     url: '/',
   },
   
@@ -182,6 +218,13 @@ export const SEOConfigs = {
     url: '/recharge',
     noindex: true,
   },
+
+  rechargeAgreement: {
+    title: '充值协议',
+    description: `${brandConfig.name} 充值服务协议与使用条款。`,
+    keywords: '充值协议, 服务协议, Token, 用户协议',
+    url: '/recharge-agreement',
+  },
 };
 
 /**
@@ -212,7 +255,7 @@ export const generateArticleStructuredData = (params: {
       name: brandConfig.name,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://ai2obj.com/logo192.ico',
+        url: 'https://seedance2.cn/logo192.png',
       },
     },
   };

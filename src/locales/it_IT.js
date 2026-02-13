@@ -1404,6 +1404,13 @@ export default {
   'recharge.message.queryOrderError': 'Impossibile interrogare lo stato dell\'ordine',
   'recharge.message.rechargeError': 'Richiesta di ricarica fallita, riprova più tardi',
 
+  // Pagina successo ricarica
+  'recharge.success.title': 'Pagamento riuscito',
+  'recharge.success.desc': 'Il tuo account è stato ricaricato. Inizia a creare!',
+  'recharge.success.orderId': 'ID ordine',
+  'recharge.success.goCreate': 'Crea',
+  'recharge.success.dashboard': 'Torna alla fatturazione',
+
   // Pagina ordini
   'orders.title': 'Storico ordini',
   'orders.subtitle': 'Visualizza tutti i tuoi ordini di ricarica e i loro stati',

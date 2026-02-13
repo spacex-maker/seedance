@@ -34,6 +34,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
 import { useLocale } from 'contexts/LocaleContext';
 import instance from 'api/axios';
+import { Analytics } from 'utils/analytics';
 import { VideoResult, Model, GenerationTask, GenerationTaskPageResponse } from './types';
 import { 
   GlobalSelectStyles,
@@ -1036,7 +1037,8 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
       }
 
       console.log('Generating image-to-video with params:', requestData);
-      
+      Analytics.trackGenerate(typeof values.prompt === 'string' ? values.prompt.length : 0);
+
       // 调用后端 API
       const response = await instance.post('/productx/sa-ai-models/video/generate/image', requestData, {
         timeout: 0,
