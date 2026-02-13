@@ -189,26 +189,7 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
       } catch (error: any) {
         // 网络错误或请求异常
         console.error('获取模型列表失败:', error);
-        // 只在真正的网络错误时显示错误提示
-        if (error.response) {
-          // 服务器返回了错误响应
-          const status = error.response.status;
-          if (status >= 500) {
-            // 服务器错误才显示错误提示
-            message.error(intl.formatMessage({ 
-              id: 'create.model.loadFailed', 
-              defaultMessage: '加载模型列表失败，请稍后重试' 
-            }));
-          }
-          // 其他错误（如 401, 403, 404）不显示，因为可能是正常的业务逻辑
-        } else if (error.request) {
-          // 请求发出但没有收到响应（网络问题）
-          message.error(intl.formatMessage({ 
-            id: 'create.model.loadFailed', 
-            defaultMessage: '网络连接失败，请检查网络后重试' 
-          }));
-        }
-        // 其他错误（如请求配置错误）不显示
+        // 不显示错误提示，静默处理
       } finally {
         setModelsLoading(false);
       }
