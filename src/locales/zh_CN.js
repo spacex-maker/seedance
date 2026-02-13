@@ -1483,6 +1483,7 @@ export default {
   'announcement.seedanceV2.title': '🎉 重磅消息：SeedanceV2 即将上线！',
   'announcement.seedanceV2.description': '字节跳动旗下全新 SeedanceV2 模型预计 2026-02-24 18:00:00 后可支持开通，带来更强大的视频生成能力和更精细的画面控制。敬请期待！',
   'announcement.seedanceV2.date': '预计 2026-02-24 18:00:00 后可支持开通',
+  'announcement.recharge.promo': '🎁 限时活动：2月24日前充值99美金，将会获得 Seedance 2.0 内测资格，并有资格进入高级会员群组！',
   'announcement.reopen.button': '新模型',
   'announcement.reopen.tooltip': '查看新模型公告',
   'announcement.reopen.viewAnnouncement': '查看 Seedance2 公告',

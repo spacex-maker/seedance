@@ -1209,6 +1209,7 @@ export default {
   'announcement.seedanceV2.title': '🎉 ¡Gran noticia: SeedanceV2 llegará pronto!',
   'announcement.seedanceV2.description': 'El nuevo modelo SeedanceV2 de ByteDance se lanzará oficialmente en marzo, ofreciendo capacidades de generación de video más potentes y un control de imagen más fino. ¡Manténganse atentos!',
   'announcement.seedanceV2.date': 'Fecha de lanzamiento prevista: marzo de 2025',
+  'announcement.recharge.promo': '🎁 Oferta por tiempo limitado: ¡Recarga $99 USD antes del 24 de febrero para obtener acceso beta a Seedance 2.0 y unirte al grupo de miembros premium!',
   'announcement.reopen.button': 'Nuevo modelo',
   'announcement.reopen.tooltip': 'Ver anuncio del nuevo modelo',
   'announcement.reopen.viewAnnouncement': 'Ver anuncio de Seedance2',

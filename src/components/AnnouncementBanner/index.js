@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { Alert } from 'antd';
 import { BulbOutlined } from '@ant-design/icons';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 const STORAGE_KEY = 'seedance_announcement_banner_closed';
 const EVENT_REOPEN = 'seedance-announcement-reopen';
@@ -37,6 +38,7 @@ const BannerWrap = styled.div`
  */
 const AnnouncementBanner = () => {
   const theme = useContext(ThemeContext);
+  const intl = useIntl();
   const [closed, setClosed] = useState(true);
 
   useEffect(() => {
@@ -68,8 +70,35 @@ const AnnouncementBanner = () => {
       <Alert
         type="info"
         icon={<BulbOutlined />}
-        message="Seedance2 即将发布"
-        description="Seedance2 预计 2026-02-24 18:00:00 后可支持开通 —— 电影级 AI 图生视频，多镜头叙事、自动分镜运镜、音画同步，让创作更专业，敬请期待。"
+        message={
+          <FormattedMessage 
+            id="announcement.seedanceV2.title" 
+            defaultMessage="🎉 重磅消息：SeedanceV2 即将上线！" 
+          />
+        }
+        description={
+          <div>
+            <FormattedMessage 
+              id="announcement.seedanceV2.description" 
+              defaultMessage="字节跳动旗下全新 SeedanceV2 模型预计 2026-02-24 18:00:00 后可支持开通，带来更强大的视频生成能力和更精细的画面控制。敬请期待！" 
+            />
+            <div style={{ 
+              marginTop: 10,
+              paddingTop: 8,
+              paddingBottom: 8,
+              borderTop: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.06)',
+              fontSize: 13,
+              fontWeight: 500,
+              color: isDark ? 'rgba(255, 215, 0, 0.95)' : '#d48806',
+              lineHeight: 1.6
+            }}>
+              <FormattedMessage 
+                id="announcement.recharge.promo" 
+                defaultMessage="🎁 限时活动：2月24日前充值99美金，将会获得 Seedance 2.0 内测资格，并有资格进入高级会员群组！" 
+              />
+            </div>
+          </div>
+        }
         closable
         onClose={handleClose}
         showIcon

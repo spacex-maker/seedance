@@ -1360,6 +1360,7 @@ export default {
   'announcement.seedanceV2.title': '🎉 重大ニュース：SeedanceV2 まもなく登場！',
   'announcement.seedanceV2.description': 'ByteDanceの新モデル SeedanceV2 が3月に正式リリース予定。より強力な動画生成機能とより細かな画像制御を実現します。お楽しみに！',
   'announcement.seedanceV2.date': '予定リリース日：2025年3月',
+  'announcement.recharge.promo': '🎁 期間限定キャンペーン：2月24日までに99米ドルをチャージすると、Seedance 2.0のベータアクセス権を獲得し、プレミアムメンバーグループに参加できます！',
   'announcement.reopen.button': '新モデル',
   'announcement.reopen.tooltip': '新モデル告知を表示',
   'announcement.reopen.viewAnnouncement': 'Seedance2 告知を見る',

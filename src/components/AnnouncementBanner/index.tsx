@@ -123,25 +123,18 @@ const AnnouncementBanner: React.FC<AnnouncementBannerProps> = ({
               defaultMessage="字节跳动旗下全新 SeedanceV2 模型将于 3 月正式发布，带来更强大的视频生成能力和更精细的画面控制。敬请期待！" 
             />
             <div style={{ 
-              marginTop: 8,
-              fontSize: 13,
-              opacity: 0.8
-            }}>
-              <FormattedMessage 
-                id="announcement.seedanceV2.date" 
-                defaultMessage="预计发布时间：2025年3月" 
-              />
-            </div>
-            <div style={{ 
               marginTop: 10,
               paddingTop: 8,
+              paddingBottom: 8,
               borderTop: isDark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.06)',
-              fontSize: 12,
-              opacity: 0.85
+              fontSize: 13,
+              fontWeight: 500,
+              color: isDark ? 'rgba(255, 215, 0, 0.95)' : '#d48806',
+              lineHeight: 1.6
             }}>
               <FormattedMessage 
-                id="announcement.disclaimer" 
-                defaultMessage="免责说明：本站由第三方团队独立运营，非字节跳动或火山引擎官方。视频生成能力基于火山引擎提供。域名 seedance2.cn 仅为访问入口，与上述公司品牌无直接关联。" 
+                id="announcement.recharge.promo" 
+                defaultMessage="🎁 限时活动：2月24日前充值99美金，将会获得 Seedance 2.0 内测资格，并有资格进入高级会员群组！" 
               />
             </div>
           </div>
