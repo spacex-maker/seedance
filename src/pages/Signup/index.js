@@ -99,8 +99,8 @@ const SignupPage = () => {
           }
         }
       } catch (error) {
+        // 保留控制台日志方便排查，但不再给用户弹出误导性的错误提示
         console.error('获取国家列表失败:', error);
-        message.error('获取国家列表失败');
       }
     };
 
