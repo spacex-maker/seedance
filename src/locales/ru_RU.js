@@ -103,7 +103,6 @@ export default {
   'create.tab.imageToVideo': 'Изображение в Видео',
   'create.tab.seedanceVideo': 'Seedance Изображение в Видео',
   'create.seedance.title': 'Seedance Изображение в Видео',
-  'create.seedance.subtitle': 'ByteDance Doubao Seedance 1.5, создание коротких видео по изображению',
   'create.seedance.noModel': 'Нет доступных моделей Seedance. Настройте в панели администратора.',
   'create.seedance.cameraFixed': 'Камера зафиксирована',
   'create.seedance.cameraFixed.true': 'Да (фиксированная)',
@@ -700,7 +699,7 @@ export default {
   'rechargeAgreement.section7.content1': 'Платформа имеет право изменять это соглашение в соответствии с потребностями развития бизнеса. После изменения соглашения оно будет объявлено в заметном месте на платформе. Если вы продолжите использовать услугу пополнения, это считается принятием измененного соглашения.',
   'rechargeAgreement.section8.title': 'VIII. Контактная Информация',
   'rechargeAgreement.section8.content1': 'Если у вас есть вопросы об этом соглашении, или вам нужно запросить возврат или обработать проблемы с пополнением, свяжитесь с нами следующими способами:',
-  'rechargeAgreement.section8.contact1': 'Электронная почта службы поддержки: support@example.com',
+  'rechargeAgreement.section8.contact1': 'Электронная почта службы поддержки: {email}',
   'rechargeAgreement.section8.contact2': 'Онлайн-служба поддержки: Рабочие дни 9:00-18:00',
   'rechargeAgreement.section8.contact3': 'Центр помощи: Просмотр FAQ',
   // Интернационализация профиля

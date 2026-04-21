@@ -6,35 +6,97 @@ import { useIntl } from 'react-intl';
 import SimpleHeader from 'components/headers/simple';
 import SeedanceVideo from 'pages/Workspace/Create/components/SeedanceVideo';
 import FooterSection from 'pages/Home/components/FooterSection';
-import AnnouncementBanner from 'components/AnnouncementBanner';
-import ReopenAnnouncementButton from 'components/AnnouncementBanner/ReopenButton';
 import brandConfig from 'config/brand';
 
 const { Content } = Layout;
 
-const BACKGROUND_VIDEO_URL =
-  'https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/user-upload/47w9oml55hsav.mp4';
-
-const VideoBackdrop = styled.div`
+/** 科幻炫彩背景：纯 CSS，无视频资源 */
+const SciFiBackdrop = styled.div`
   position: fixed;
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  
+  background: #030712;
+
+  @keyframes sciGradientDrift {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(-3%, 2%) scale(1.05);
+      opacity: 0.92;
+    }
+    100% {
+      transform: translate(2%, -2%) scale(1.02);
+      opacity: 1;
+    }
+  }
+
+  @keyframes sciHuePulse {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(25deg);
+    }
+  }
+
+  /* 主光晕层 */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -15%;
+    animation: sciGradientDrift 22s ease-in-out infinite alternate,
+      sciHuePulse 28s ease-in-out infinite alternate;
+    background:
+      radial-gradient(ellipse 100% 80% at 15% 20%, rgba(56, 189, 248, 0.45), transparent 55%),
+      radial-gradient(ellipse 90% 70% at 85% 15%, rgba(168, 85, 247, 0.42), transparent 50%),
+      radial-gradient(ellipse 70% 90% at 50% 100%, rgba(236, 72, 153, 0.28), transparent 55%),
+      radial-gradient(ellipse 50% 40% at 70% 60%, rgba(34, 211, 238, 0.2), transparent 45%),
+      linear-gradient(
+        160deg,
+        #0f172a 0%,
+        #1e1b4b 22%,
+        #312e81 42%,
+        #0c4a6e 58%,
+        #134e4a 78%,
+        #0f172a 100%
+      );
+    background-size: 120% 120%;
+    background-position: 40% 30%;
+  }
+
+  /* 网格 + 暗角，保证前景可读 */
   &::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: ${props => props.theme.mode === 'dark'
-      ? 'linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%)'
-      : 'linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.5) 100%)'};
     z-index: 1;
-  }
-  
-  & video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        180deg,
+        ${props =>
+          props.theme.mode === 'dark'
+            ? 'rgba(3, 7, 18, 0.15) 0%, rgba(3, 7, 18, 0.55) 100%'
+            : 'rgba(255, 255, 255, 0.1) 0%, rgba(248, 250, 252, 0.32) 100%'}
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 47px,
+        rgba(148, 163, 184, 0.04) 47px,
+        rgba(148, 163, 184, 0.04) 48px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 47px,
+        rgba(148, 163, 184, 0.03) 47px,
+        rgba(148, 163, 184, 0.03) 48px
+      ),
+      radial-gradient(ellipse 85% 65% at 50% 50%, transparent 40%, rgba(3, 7, 18, 0.5) 100%);
   }
 `;
 
@@ -115,23 +177,12 @@ const SeedanceVideoPage = () => {
     <>
       <Helmet>
         <title>{brandConfig.productNameFull} - {brandConfig.name}</title>
-        <meta name="description" content={`字节豆包 ${brandConfig.productName} 1.5 图生视频`} />
+        <meta name="description" content={`${brandConfig.productNameFull} · AI 图生视频`} />
       </Helmet>
-      <VideoBackdrop theme={theme}>
-        <video
-          src={BACKGROUND_VIDEO_URL}
-          autoPlay
-          loop
-          muted
-          playsInline
-          aria-hidden
-        />
-      </VideoBackdrop>
+      <SciFiBackdrop theme={theme} aria-hidden />
       <PageWrapper>
         <SimpleHeader />
-        <ReopenAnnouncementButton />
         <PageContent>
-          <AnnouncementBanner />
           <PoweredByWrap theme={theme}>
             <Typography.Text type="secondary">
               Powered by{' '}

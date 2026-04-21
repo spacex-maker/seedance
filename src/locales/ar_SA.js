@@ -103,7 +103,6 @@ export default {
   'create.tab.imageToVideo': 'صورة إلى فيديو',
   'create.tab.seedanceVideo': 'Seedance صورة إلى فيديو',
   'create.seedance.title': 'Seedance صورة إلى فيديو',
-  'create.seedance.subtitle': 'ByteDance Doubao Seedance 1.5، إنشاء فيديو قصير مدفوع بالصورة',
   'create.seedance.noModel': 'لا يوجد نموذج Seedance متاح. يرجى التكوين في لوحة الإدارة.',
   'create.seedance.cameraFixed': 'الكاميرا ثابتة',
   'create.seedance.cameraFixed.true': 'نعم (ثابتة)',
@@ -714,7 +713,7 @@ export default {
   'rechargeAgreement.section7.content1': 'للمنصة الحق في تعديل هذه الاتفاقية وفقاً لاحتياجات تطوير الأعمال. بعد تعديل الاتفاقية، سيتم الإعلان عنها في مكان بارز على المنصة. إذا واصلت استخدام خدمة إعادة الشحن، يُعتبر ذلك قبولاً للاتفاقية المعدلة.',
   'rechargeAgreement.section8.title': 'ثامناً: معلومات الاتصال',
   'rechargeAgreement.section8.content1': 'إذا كان لديك أي أسئلة حول هذه الاتفاقية، أو تحتاج إلى طلب الاسترداد أو معالجة مشاكل إعادة الشحن، يرجى الاتصال بنا من خلال الطرق التالية:',
-  'rechargeAgreement.section8.contact1': 'بريد خدمة العملاء: support@example.com',
+  'rechargeAgreement.section8.contact1': 'بريد خدمة العملاء: {email}',
   'rechargeAgreement.section8.contact2': 'خدمة العملاء عبر الإنترنت: أيام العمل 9:00-18:00',
   'rechargeAgreement.section8.contact3': 'مركز المساعدة: عرض الأسئلة الشائعة',
   // تدويل الملف الشخصي

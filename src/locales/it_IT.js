@@ -103,7 +103,6 @@ export default {
   'create.tab.imageToVideo': 'Immagine a Video',
   'create.tab.seedanceVideo': 'Seedance Immagine a Video',
   'create.seedance.title': 'Seedance Immagine a Video',
-  'create.seedance.subtitle': 'ByteDance Doubao Seedance 1.5, generazione di video brevi guidata dall\'immagine',
   'create.seedance.noModel': 'Nessun modello Seedance disponibile. Configurare nel pannello di amministrazione.',
   'create.seedance.cameraFixed': 'Fotocamera fissa',
   'create.seedance.cameraFixed.true': 'Sì (fissa)',
@@ -720,7 +719,7 @@ export default {
   'rechargeAgreement.section7.content1': 'La piattaforma ha il diritto di modificare questo accordo secondo le esigenze di sviluppo commerciale. Dopo la modifica dell\'accordo, sarà annunciato in una posizione prominente sulla piattaforma. Se continui a utilizzare il servizio di ricarica, è considerato come accettazione dell\'accordo modificato.',
   'rechargeAgreement.section8.title': 'VIII. Informazioni di Contatto',
   'rechargeAgreement.section8.content1': 'Se hai domande su questo accordo, o devi richiedere un rimborso o gestire problemi di ricarica, contattaci tramite i seguenti metodi:',
-  'rechargeAgreement.section8.contact1': 'Email del Servizio Clienti: support@example.com',
+  'rechargeAgreement.section8.contact1': 'Email del Servizio Clienti: {email}',
   'rechargeAgreement.section8.contact2': 'Servizio Clienti Online: Giorni lavorativi 9:00-18:00',
   'rechargeAgreement.section8.contact3': 'Centro Assistenza: Visualizza FAQ',
   // Internazionalizzazione profilo

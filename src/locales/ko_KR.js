@@ -103,7 +103,6 @@ export default {
   'create.tab.imageToVideo': '이미지에서 비디오',
   'create.tab.seedanceVideo': 'Seedance 이미지→비디오',
   'create.seedance.title': 'Seedance 이미지→비디오',
-  'create.seedance.subtitle': 'ByteDance Doubao Seedance 1.5, 이미지 기반 숏폼 비디오 생성',
   'create.seedance.noModel': '사용 가능한 Seedance 모델이 없습니다. 관리자에서 설정해 주세요.',
   'create.seedance.cameraFixed': '카메라 고정',
   'create.seedance.cameraFixed.true': '예(고정)',
@@ -784,7 +783,7 @@ export default {
   'rechargeAgreement.section7.content1': '플랫폼은 사업 발전 필요에 따라 본 약관을 수정할 권리가 있습니다. 약관 수정 후 플랫폼의 눈에 띄는 위치에 공지됩니다. 귀하가 충전 서비스를 계속 사용하는 경우 수정된 약관을 수락한 것으로 간주됩니다.',
   'rechargeAgreement.section8.title': '8. 연락처',
   'rechargeAgreement.section8.content1': '본 약관에 대한 질문이 있거나 환불 신청, 충전 문제 처리가 필요한 경우 다음 방법으로 문의하세요:',
-  'rechargeAgreement.section8.contact1': '고객 서비스 이메일: support@example.com',
+  'rechargeAgreement.section8.contact1': '고객 서비스 이메일: {email}',
   'rechargeAgreement.section8.contact2': '온라인 고객 서비스: 평일 9:00-18:00',
   'rechargeAgreement.section8.contact3': '도움말 센터: 자주 묻는 질문 보기',
   // 프로필 국제화

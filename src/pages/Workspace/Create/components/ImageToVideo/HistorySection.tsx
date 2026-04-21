@@ -28,46 +28,62 @@ dayjs.extend(relativeTime);
 // 1. 样式系统 (Styled System)
 // ==========================================
 
+/** 模块外层：不滚动，头部与分页随布局固定 */
 const Container = styled.div`
   margin-top: 0;
   width: 100%;
-  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+`;
+
+/** 仅列表区域滚动 */
+const ListScrollArea = styled.div`
+  max-height: 420px;
   overflow-y: auto;
   overflow-x: hidden;
-  
+  min-height: 0;
+
   &::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   &::-webkit-scrollbar-track {
     background: transparent;
     margin: 4px 0;
   }
-  
+
   &::-webkit-scrollbar-thumb {
     background: ${props => props.theme.mode === 'dark' ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.15)'};
     border-radius: 4px;
     border: 2px solid transparent;
     background-clip: padding-box;
     transition: background 0.2s ease;
-    
+
     &:hover {
       background: ${props => props.theme.mode === 'dark' ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.25)'};
       background-clip: padding-box;
     }
-    
+
     &:active {
       background: ${props => props.theme.mode === 'dark' ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.35)'};
       background-clip: padding-box;
     }
   }
-  
-  /* Firefox */
+
   scrollbar-width: thin;
   scrollbar-color: ${props => props.theme.mode === 'dark' ? 'rgba(255,255,255,0.15) transparent' : 'rgba(0,0,0,0.15) transparent'};
 `;
 
+const PaginationBar = styled.div`
+  flex-shrink: 0;
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+`;
+
 const Header = styled.div`
+  flex-shrink: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -636,27 +652,29 @@ const HistorySection: React.FC<HistorySectionProps> = ({
         </div>
       ) : historyTasks.length > 0 ? (
         <>
-          <Grid>
-            <AnimatePresence>
-              {historyTasks.map((task, index) => (
-                <HistoryCard
-                  key={task.id}
-                  task={task}
-                  index={index}
-                  onTaskClick={onTaskClick}
-                  onDownload={handleDownload}
-                  onCopyPrompt={handleCopyPrompt}
-                  onDelete={handleDelete}
-                  onVideoError={handleVideoError}
-                  onVideoAbort={handleVideoAbort}
-                  renderCardContent={renderCardContent}
-                  intl={intl}
-                />
-              ))}
-            </AnimatePresence>
-          </Grid>
+          <ListScrollArea>
+            <Grid>
+              <AnimatePresence>
+                {historyTasks.map((task, index) => (
+                  <HistoryCard
+                    key={task.id}
+                    task={task}
+                    index={index}
+                    onTaskClick={onTaskClick}
+                    onDownload={handleDownload}
+                    onCopyPrompt={handleCopyPrompt}
+                    onDelete={handleDelete}
+                    onVideoError={handleVideoError}
+                    onVideoAbort={handleVideoAbort}
+                    renderCardContent={renderCardContent}
+                    intl={intl}
+                  />
+                ))}
+              </AnimatePresence>
+            </Grid>
+          </ListScrollArea>
 
-          <div style={{ marginTop: 16, display: 'flex', justifyContent: 'center' }}>
+          <PaginationBar>
             <Pagination
               current={historyPagination.current}
               pageSize={historyPagination.pageSize}
@@ -666,7 +684,7 @@ const HistorySection: React.FC<HistorySectionProps> = ({
               showQuickJumper
               size="small"
             />
-          </div>
+          </PaginationBar>
         </>
       ) : (
         <Empty 

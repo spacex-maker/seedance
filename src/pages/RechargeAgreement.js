@@ -8,6 +8,7 @@ import { ConfigProvider, theme, Button } from "antd";
 import { FileTextOutlined, ArrowLeftOutlined, WalletOutlined } from "@ant-design/icons";
 import { useIntl } from 'react-intl';
 import { base } from "api/base";
+import brandConfig from "config/brand";
 
 // ==========================================
 // 1. 样式系统 (Styled System)
@@ -229,13 +230,14 @@ const RechargeAgreementContent = () => {
   const { token } = theme.useToken();
   const navigate = useNavigate();
   const intl = useIntl();
-  const [officialEmail, setOfficialEmail] = useState('support@soramv.com');
+  const [officialEmail, setOfficialEmail] = useState(brandConfig.supportEmail);
 
   useEffect(() => {
     const fetchOfficialEmail = async () => {
       const result = await base.getOfficialEmail();
-      if (result.success && result.data) {
-        setOfficialEmail(result.data);
+      const addr = result.success && result.data ? String(result.data).trim() : '';
+      if (addr) {
+        setOfficialEmail(addr);
       }
     };
     fetchOfficialEmail();

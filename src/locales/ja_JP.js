@@ -109,7 +109,6 @@ export default {
   'create.tab.imageToVideo': '画像から動画',
   'create.tab.seedanceVideo': 'Seedance 画像から動画',
   'create.seedance.title': 'Seedance 画像から動画',
-  'create.seedance.subtitle': 'ByteDance Doubao Seedance 1.5、画像駆動のショート動画生成',
   'create.seedance.noModel': '利用可能な Seedance モデルがありません。管理画面で設定してください。',
   'create.seedance.cameraFixed': 'カメラ固定',
   'create.seedance.cameraFixed.true': 'はい（固定）',
@@ -804,7 +803,7 @@ export default {
   'rechargeAgreement.section7.content1': 'プラットフォームは、事業発展の必要性に応じて本規約を変更する権利を有します。規約変更後、プラットフォームの目立つ場所に公示されます。お客様がチャージサービスを引き続き使用する場合、変更後の規約を受け入れたものとみなされます。',
   'rechargeAgreement.section8.title': '八、連絡先',
   'rechargeAgreement.section8.content1': '本規約についてご質問がある場合、または返金申請、チャージ問題の処理が必要な場合は、以下の方法でお問い合わせください：',
-  'rechargeAgreement.section8.contact1': 'カスタマーサービスメール：support@example.com',
+  'rechargeAgreement.section8.contact1': 'カスタマーサービスメール：{email}',
   'rechargeAgreement.section8.contact2': 'オンラインカスタマーサービス：平日9:00-18:00',
   'rechargeAgreement.section8.contact3': 'ヘルプセンター：よくある質問を閲覧',
   // プロフィール国際化
