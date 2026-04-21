@@ -559,6 +559,7 @@ export default {
   'create.model.select.image.placeholder': '请选择要使用的图片生成模型',
   'create.model.loading': '加载模型中...',
   'create.model.loadFailed': '加载模型列表失败',
+  'create.model.noModel': '暂无可用的模型',
   'create.model.family.select': '选择模型家族',
   'create.model.family.select.placeholder': '请选择模型家族',
   'create.model.family.loadFailed': '加载模型家族列表失败',
@@ -687,6 +688,17 @@ export default {
   'create.i2v.empty': '生成结果与原图对比将显示在此处',
   'create.generate.i2v': '开始生成视频',
   'create.compliance.notice': '内容合规提示',
+  
+  // 登录提示弹窗
+  'loginPrompt.title': '快速登录',
+  'loginPrompt.description': '使用 Google 账号快速登录，享受更多功能',
+  'loginPrompt.googleButton': '使用 Google 登录',
+  'loginPrompt.otherLogin': '其他登录方式',
+  'loginPrompt.googleLoginError': '获取谷歌授权链接失败',
+  
+  // Google One Tap
+  'googleOneTap.loginSuccess': '登录成功',
+  'googleOneTap.loginError': '登录失败',
   'create.prompt.i2v.placeholder': '例如：让图片中的人物开始行走，背景的树叶随风摇摆...',
   'create.prompt.enhance.tooltip': 'AI丰富提示词，让描述更加详细生动',
   'create.prompt.enhance': 'AI丰富',
@@ -1470,6 +1482,7 @@ export default {
   'announcement.seedanceV2.title': '🎉 重磅消息：SeedanceV2 即将上线！',
   'announcement.seedanceV2.description': '字节跳动旗下全新 SeedanceV2 模型预计 2026-02-24 18:00:00 后可支持开通，带来更强大的视频生成能力和更精细的画面控制。敬请期待！',
   'announcement.seedanceV2.date': '预计 2026-02-24 18:00:00 后可支持开通',
+  'announcement.recharge.promo': '🎁 限时活动：2月24日前充值99美金，将会获得 Seedance 2.0 内测资格，并有资格进入高级会员群组！',
   'announcement.reopen.button': '新模型',
   'announcement.reopen.tooltip': '查看新模型公告',
   'announcement.reopen.viewAnnouncement': '查看 Seedance2 公告',

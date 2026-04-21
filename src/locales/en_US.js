@@ -513,6 +513,7 @@ export default {
   'create.model.select.image.placeholder': 'Please select an image generation model',
   'create.model.loading': 'Loading models...',
   'create.model.loadFailed': 'Failed to load model list',
+  'create.model.noModel': 'No available models',
   'create.model.family.select': 'Select Model Family',
   'create.model.family.select.placeholder': 'Please select a model family',
   'create.model.family.loadFailed': 'Failed to load model families',
@@ -640,6 +641,17 @@ export default {
   'create.i2v.empty': 'Generated results and original image comparison will be displayed here',
   'create.generate.i2v': 'Start Generating Video',
   'create.compliance.notice': 'Content Compliance Notice',
+  
+  // Login Prompt Popup
+  'loginPrompt.title': 'Quick Login',
+  'loginPrompt.description': 'Sign in with Google to access more features',
+  'loginPrompt.googleButton': 'Sign in with Google',
+  'loginPrompt.otherLogin': 'Other login methods',
+  'loginPrompt.googleLoginError': 'Failed to get Google authorization link',
+  
+  // Google One Tap
+  'googleOneTap.loginSuccess': 'Login successful',
+  'googleOneTap.loginError': 'Login failed',
   'create.prompt.i2v.placeholder': 'e.g., Make the person in the image start walking, leaves in the background swaying in the wind...',
   'create.prompt.enhance.tooltip': 'AI enrich prompt to make the description more detailed and vivid',
   'create.prompt.enhance': 'AI Enrich',
@@ -1400,6 +1412,7 @@ export default {
   'announcement.seedanceV2.title': '🎉 Exciting News: SeedanceV2 Coming Soon!',
   'announcement.seedanceV2.description': 'ByteDance\'s brand new SeedanceV2 model will be officially launched in March, bringing more powerful video generation capabilities and finer image control. Stay tuned!',
   'announcement.seedanceV2.date': 'Expected Launch: March 2025',
+  'announcement.recharge.promo': '🎁 Limited Time Offer: Recharge $99 USD before February 24th to get Seedance 2.0 beta access and join the premium member group!',
   'announcement.reopen.button': 'New Model',
   'announcement.reopen.tooltip': 'View new model announcement',
   'announcement.reopen.viewAnnouncement': 'View Seedance2 announcement',
