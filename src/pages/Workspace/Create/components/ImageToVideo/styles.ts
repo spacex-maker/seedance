@@ -175,12 +175,12 @@ export const GlobalSelectStyles = createGlobalStyle<{ $seedancePage?: boolean }>
     textarea.ant-input {
       background: ${isDark
         ? 'rgba(0, 0, 0, 0.15)'
-        : 'rgba(255, 255, 255, 0.08)'} !important;
+        : 'rgba(255, 255, 255, 0.88)'} !important;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border-color: ${isDark
         ? 'rgba(255, 255, 255, 0.12)'
-        : 'rgba(0, 0, 0, 0.15)'} !important;
+        : 'rgba(15, 23, 42, 0.12)'} !important;
       border-radius: 12px !important;
       transition: all 0.2s ease;
       box-shadow: none !important;
@@ -188,10 +188,10 @@ export const GlobalSelectStyles = createGlobalStyle<{ $seedancePage?: boolean }>
       &:hover {
         background: ${isDark
           ? 'rgba(0, 0, 0, 0.2)'
-          : 'rgba(255, 255, 255, 0.12)'} !important;
+          : 'rgba(255, 255, 255, 0.96)'} !important;
         border-color: ${isDark
           ? 'rgba(255, 255, 255, 0.18)'
-          : 'rgba(0, 0, 0, 0.2)'} !important;
+          : 'rgba(15, 23, 42, 0.2)'} !important;
       }
       
       &:focus,
@@ -199,7 +199,7 @@ export const GlobalSelectStyles = createGlobalStyle<{ $seedancePage?: boolean }>
       &.ant-input-affix-wrapper-focused {
         background: ${isDark
           ? 'rgba(0, 0, 0, 0.25)'
-          : 'rgba(255, 255, 255, 0.15)'} !important;
+          : 'rgba(255, 255, 255, 1)'} !important;
         border-color: #1890ff !important;
         border-radius: 12px !important;
         box-shadow: 0 0 0 2px ${isDark
@@ -224,12 +224,12 @@ export const GlobalSelectStyles = createGlobalStyle<{ $seedancePage?: boolean }>
     .ant-select .ant-select-selector {
       background: ${isDark
         ? 'rgba(0, 0, 0, 0.15)'
-        : 'rgba(255, 255, 255, 0.08)'} !important;
+        : 'rgba(255, 255, 255, 0.88)'} !important;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border-color: ${isDark
         ? 'rgba(255, 255, 255, 0.12)'
-        : 'rgba(0, 0, 0, 0.15)'} !important;
+        : 'rgba(15, 23, 42, 0.12)'} !important;
       border-radius: 12px !important;
       transition: all 0.2s ease;
       box-shadow: none !important;
@@ -238,17 +238,17 @@ export const GlobalSelectStyles = createGlobalStyle<{ $seedancePage?: boolean }>
     .ant-select:hover .ant-select-selector {
       background: ${isDark
         ? 'rgba(0, 0, 0, 0.2)'
-        : 'rgba(255, 255, 255, 0.12)'} !important;
+        : 'rgba(255, 255, 255, 0.96)'} !important;
       border-color: ${isDark
         ? 'rgba(255, 255, 255, 0.18)'
-        : 'rgba(0, 0, 0, 0.2)'} !important;
+        : 'rgba(15, 23, 42, 0.2)'} !important;
     }
 
     .ant-select-focused .ant-select-selector,
     .ant-select.ant-select-focused .ant-select-selector {
       background: ${isDark
         ? 'rgba(0, 0, 0, 0.25)'
-        : 'rgba(255, 255, 255, 0.15)'} !important;
+        : 'rgba(255, 255, 255, 1)'} !important;
       border-color: #1890ff !important;
       border-radius: 12px !important;
       box-shadow: 0 0 0 2px ${isDark
@@ -260,12 +260,13 @@ export const GlobalSelectStyles = createGlobalStyle<{ $seedancePage?: boolean }>
     .ant-select-dropdown {
       background: ${isDark
         ? 'rgba(0, 0, 0, 0.85)'
-        : 'rgba(255, 255, 255, 0.9)'} !important;
+        : 'rgba(255, 255, 255, 0.97)'} !important;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid ${isDark
         ? 'rgba(255, 255, 255, 0.1)'
-        : 'rgba(0, 0, 0, 0.1)'} !important;
+        : 'rgba(15, 23, 42, 0.08)'} !important;
+      box-shadow: ${isDark ? 'none' : '0 12px 40px rgba(15, 23, 42, 0.1)'} !important;
     }
   ` : '';
   }}
@@ -279,15 +280,15 @@ export const StyledCard = styled(Card)<{ $seedancePage?: boolean }>`
   ${props => props.$seedancePage ? `
     background: ${props.theme.mode === 'dark'
       ? 'rgba(0, 0, 0, 0.2)'
-      : 'rgba(255, 255, 255, 0.1)'} !important;
+      : 'rgba(255, 255, 255, 0.78)'} !important;
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid ${props.theme.mode === 'dark'
       ? 'rgba(255, 255, 255, 0.08)'
-      : 'rgba(255, 255, 255, 0.2)'} !important;
+      : 'rgba(15, 23, 42, 0.08)'} !important;
     box-shadow: ${props.theme.mode === 'dark'
       ? '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05)'
-      : '0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.25)'} !important;
+      : '0 8px 32px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9)'} !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   ` : ''}
   
@@ -316,21 +317,24 @@ export const ResultArea = styled.div`
 export const VideoPlaceholder = styled.div`
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: #333;
+  background: ${props => (props.theme.mode === 'dark' ? '#333' : '#e2e8f0')};
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: ${props => (props.theme.mode === 'dark' ? '#fff' : '#475569')};
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: ${props =>
+    props.theme.mode === 'dark'
+      ? '0 8px 20px rgba(0, 0, 0, 0.3)'
+      : '0 8px 24px rgba(15, 23, 42, 0.08)'};
 
   video {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    background: #000;
+    background: ${props => (props.theme.mode === 'dark' ? '#000' : '#f1f5f9')};
   }
 `;
 

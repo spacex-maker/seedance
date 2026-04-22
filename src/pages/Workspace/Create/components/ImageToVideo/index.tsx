@@ -121,6 +121,19 @@ export interface ImageToVideoProps {
   seedancePage?: boolean;
 }
 
+/** 接口可能返回 { success, data: Model[] }、{ code, data: Model[] } 或 data 为 { records: Model[] } */
+function extractEnabledModelsList(body: unknown): Model[] {
+  if (body == null || typeof body !== 'object') return [];
+  const p = body as Record<string, unknown>;
+  const inner = p.data;
+  if (Array.isArray(inner)) return inner as Model[];
+  if (inner && typeof inner === 'object' && Array.isArray((inner as { records?: unknown }).records)) {
+    return (inner as { records: Model[] }).records;
+  }
+  if (Array.isArray(p.records)) return p.records as Model[];
+  return [];
+}
+
 const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => {
   const intl = useIntl();
   const navigate = useNavigate();
@@ -195,8 +208,9 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
         const response = await instance.get('/productx/sa-ai-models/enabled/by-type', {
           params: { modelType: 'i2v' },
         });
-        if (response.data.success && response.data.data && response.data.data.length > 0) {
-          let list = response.data.data as Model[];
+        const listFromApi = extractEnabledModelsList(response.data);
+        if (listFromApi.length > 0) {
+          let list = listFromApi;
           if (seedancePage) {
             list = list.filter((m: Model) => (m.modelCode || '').toLowerCase().includes('seedance'));
           }
@@ -271,8 +285,8 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
       });
       pollingTasksRef.current.clear();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- 与历史一致：intl / seedance 页切换时重拉
-  }, [intl, seedancePage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- 语言或 seedance 页切换时重拉（用 locale 避免 intl 引用抖动重复请求）
+  }, [intl.locale, seedancePage]);
 
   // 生成成功后刷新记录
   useEffect(() => {
