@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
   Typography, 
   Input, 
@@ -15,6 +15,7 @@ import {
   Tooltip,
   Modal,
   Switch,
+  Alert,
 } from 'antd';
 import { 
   ThunderboltOutlined,
@@ -36,6 +37,8 @@ import {
   DeleteOutlined,
   AudioOutlined,
   QuestionCircleOutlined,
+  ThunderboltFilled,
+  CloudUploadOutlined,
 } from '@ant-design/icons';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
@@ -66,6 +69,7 @@ import {
   getBase64,
 } from './utils';
 import HistorySection from './HistorySection';
+import MaterialLibrarySection from './MaterialLibrarySection';
 import TaskDetailModal from './TaskDetailModal';
 import WaitingTaskQueue, { WaitingTask } from './WaitingTaskQueue';
 import ModelDetailModal from './ModelDetailModal';
@@ -77,6 +81,27 @@ import DoubaoSeedance20Params, {
 
 const { Title, Text } = Typography;
 const { TextArea } = Input;
+
+const TOKEN_BALANCE_POLL_MS = 20000;
+
+/** 根据接口文案判断是否展示「去充值」 */
+function shouldOfferRecharge(msg: string): boolean {
+  if (!msg || typeof msg !== 'string') return false;
+  const m = msg.toLowerCase();
+  return (
+    msg.includes('余额') ||
+    msg.includes('积分不足') ||
+    (msg.includes('积分') && (msg.includes('不足') || msg.includes('不够'))) ||
+    m.includes('insufficient') ||
+    m.includes('not enough') ||
+    (m.includes('balance') && m.includes('enough'))
+  );
+}
+
+function formatTokenAmount(n: number): string {
+  if (!Number.isFinite(n)) return '0';
+  return Number.isInteger(n) ? String(n) : n.toFixed(2);
+}
 
 function isSeedance2Model(model: Model | null | undefined): boolean {
   const code = (model?.modelCode || '').toLowerCase();
@@ -138,13 +163,53 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
   const intl = useIntl();
   const navigate = useNavigate();
   const [form] = Form.useForm();
+  const watchedDuration = Form.useWatch('duration', form);
   const [loading, setLoading] = useState(false);
   const [generatedVideo, setGeneratedVideo] = useState<VideoResult | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [models, setModels] = useState<Model[]>([]);
   const [selectedModel, setSelectedModel] = useState<Model | null>(null);
   const [modelsLoading, setModelsLoading] = useState(false);
+  /** 生成接口等业务错误，固定在生成按钮上方展示，直至关闭或再次成功提交 */
+  const [generateApiError, setGenerateApiError] = useState<{
+    message: string;
+    description?: string;
+    showRecharge?: boolean;
+  } | null>(null);
+  /** Token 余额（与计费一致，来自 /productx/user/balance） */
+  const [tokenBalance, setTokenBalance] = useState<number | null>(null);
+  const [tokenBalanceLoading, setTokenBalanceLoading] = useState(false);
   const [modelPickerVisible, setModelPickerVisible] = useState(false);
+
+  const setApiError = (message: string, options?: { forceRecharge?: boolean; description?: string }) => {
+    setGenerateApiError({
+      message,
+      description: options?.description,
+      showRecharge: options?.forceRecharge === true || shouldOfferRecharge(message),
+    });
+  };
+
+  const fetchTokenBalance = useCallback(async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setTokenBalance(null);
+      return;
+    }
+    setTokenBalanceLoading(true);
+    try {
+      const res = await instance.get('/productx/user/balance');
+      if (res.data?.success && res.data?.data) {
+        const raw = res.data.data.tokenBalance;
+        const n = typeof raw === 'number' ? raw : parseFloat(String(raw ?? 0));
+        setTokenBalance(Number.isFinite(n) ? n : 0);
+      }
+    } catch {
+      // 保留上次余额，避免闪烁
+    } finally {
+      setTokenBalanceLoading(false);
+    }
+  }, []);
+
   const updateFormByModelRef = useRef<(model: Model) => void>(() => {});
   const abortControllerRef = useRef<AbortController | null>(null);
   const pollingTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -183,6 +248,12 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
   // 模型详情模态框相关状态
   const [modelDetailModalVisible, setModelDetailModalVisible] = useState(false);
   const [selectedModelForDetail, setSelectedModelForDetail] = useState<Model | null>(null);
+  /** 素材库列表刷新（上传登记成功后递增） */
+  const [materialLibraryTick, setMaterialLibraryTick] = useState(0);
+  /** 与素材库当前目录同步，上传登记 ensure 时写入该目录 */
+  const materialEnsureFolderIdRef = useRef<number | null>(null);
+  /** COS 上传阶段进度 0–100，非上传阶段为 null（与 loading 配合：loading 且非 null 表示仍在上传图片） */
+  const [cosUploadProgress, setCosUploadProgress] = useState<number | null>(null);
 
   // 初始化时确保标志为 false
   useEffect(() => {
@@ -296,6 +367,19 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
       }, 1000);
     }
   }, [generatedVideo, loading]);
+
+  useEffect(() => {
+    void fetchTokenBalance();
+    const id = window.setInterval(() => void fetchTokenBalance(), TOKEN_BALANCE_POLL_MS);
+    const onVis = () => {
+      if (document.visibilityState === 'visible') void fetchTokenBalance();
+    };
+    document.addEventListener('visibilitychange', onVis);
+    return () => {
+      window.clearInterval(id);
+      document.removeEventListener('visibilitychange', onVis);
+    };
+  }, [fetchTokenBalance]);
 
   // AI丰富提示词
   const handleEnhancePrompt = async () => {
@@ -530,6 +614,44 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
     handleFileSelect(file);
   };
 
+  const registerMaterialAfterUpload = async (imageUrl: string, file: File) => {
+    try {
+      const fid = materialEnsureFolderIdRef.current;
+      const res = await instance.post('/productx/sa-user-material/ensure', {
+        downloadUrl: imageUrl,
+        fileName: file.name,
+        size: file.size,
+        mimeType: file.type || 'image/jpeg',
+        displayName: file.name,
+        materialType: 'image',
+        ...(fid != null ? { folderId: fid } : {}),
+      });
+      if (res.data?.success) {
+        setMaterialLibraryTick((t) => t + 1);
+      }
+    } catch (err) {
+      console.warn('登记素材库失败（不影响生成）', err);
+    }
+  };
+
+  const applyMaterialFromUrlAsFirstFrame = async (url: string, displayName: string) => {
+    const res = await fetch(url, { mode: 'cors', credentials: 'omit' });
+    if (!res.ok) {
+      throw new Error('fetch failed');
+    }
+    const blob = await res.blob();
+    const base = (displayName || 'image').replace(/[/\\]/g, '_');
+    const name = base.includes('.') ? base : `${base}.jpg`;
+    const file = new File([blob], name, { type: blob.type || 'image/jpeg' });
+    await handleFileSelect(file);
+    message.success(
+      intl.formatMessage({
+        id: 'create.material.applied',
+        defaultMessage: '已填入起始帧，可修改提示词后生成',
+      }),
+    );
+  };
+
   const handleRemoveImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     setOriginalImageUrl(null);
@@ -616,6 +738,27 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
     
     return `${totalTokens} Token`;
   };
+
+  const getEstimatedTokenCost = (duration: number): number | null => {
+    if (!selectedModel || selectedModel.tokenCost === null || selectedModel.tokenCost === undefined) {
+      return null;
+    }
+    return selectedModel.tokenCost * duration;
+  };
+
+  const durationSafeForBalance =
+    watchedDuration != null && watchedDuration !== ''
+      ? Number(watchedDuration)
+      : 8;
+  const durationResolvedForBalance =
+    Number.isFinite(durationSafeForBalance) && durationSafeForBalance > 0 ? durationSafeForBalance : 8;
+  const needTokensForBalanceRow = getEstimatedTokenCost(durationResolvedForBalance);
+  const authTokenForBalanceRow = typeof localStorage !== 'undefined' ? localStorage.getItem('token') : null;
+  const balanceTooLowForRow =
+    !!authTokenForBalanceRow &&
+    needTokensForBalanceRow != null &&
+    tokenBalance !== null &&
+    tokenBalance < needTokensForBalanceRow;
 
   // 获取支持的视频格式选项
   const getAvailableVideoFormats = () => {
@@ -942,6 +1085,8 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
               thumbnail: taskData.thumbnail || taskData.thumbnailUrl || '',
             };
             setGeneratedVideo(videoResult);
+            setGenerateApiError(null);
+            void fetchTokenBalance();
             message.success(intl.formatMessage({ 
               id: 'create.video.generate.success', 
               defaultMessage: '视频生成成功' 
@@ -963,7 +1108,7 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
             id: 'create.video.generate.failed', 
             defaultMessage: '视频生成失败' 
           });
-          message.error(errorMsg);
+          setApiError(errorMsg);
         }
       } else {
         throw new Error(response.data?.message || intl.formatMessage({ 
@@ -979,6 +1124,11 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
       }
       
       console.error('查询任务状态失败:', error);
+      const serverMsg = error.response?.data?.message;
+      if (serverMsg) {
+        setApiError(serverMsg);
+        setLoading(false);
+      }
     }
   };
 
@@ -1021,12 +1171,13 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
   // 取消当前正在进行的生成
   const handleCancelGenerate = () => {
     stopAllPolling();
-    
+    setCosUploadProgress(null);
+
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
       abortControllerRef.current = null;
     }
-    
+
     setLoading(false);
     message.info(intl.formatMessage({ 
       id: 'create.video.generate.cancelled', 
@@ -1161,56 +1312,62 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
     setSelectedModelForDetail(null);
   };
 
-  // 上传图片到COS（返回URL）
-  const uploadImageToServer = async (file: File): Promise<string> => {
+  /**
+   * 上传图片到 COS（返回 URL）
+   * @param onOverallPercent 单文件进度 0–100 会映射到 range 区间，用于多图时合并成一条总进度
+   */
+  const uploadImageToServer = async (
+    file: File,
+    onOverallPercent?: (percent: number) => void,
+    range: [number, number] = [0, 100],
+  ): Promise<string> => {
     try {
-      // 动态导入 cosService 和 getUserStorageNodes
       const { cosService } = await import('services/cos');
       const { getUserStorageNodes } = await import('services/storageService');
-      
-      // 获取用户信息
+
       const storedUserInfo = localStorage.getItem('userInfo');
       if (!storedUserInfo) {
         throw new Error('用户未登录');
       }
       const userInfo = JSON.parse(storedUserInfo);
       const fullPath = `${userInfo.username}/`;
-      
-      // 获取用户的默认存储节点
+
       const nodesResponse = await getUserStorageNodes();
       if (!nodesResponse.success || !nodesResponse.data || nodesResponse.data.length === 0) {
         throw new Error('未找到可用的存储节点');
       }
-      
-      // 找到默认节点或使用第一个节点
-      const defaultNode = nodesResponse.data.find(node => node.isDefault);
+
+      const defaultNode = nodesResponse.data.find((node: { isDefault?: boolean }) => node.isDefault);
       const nodeId = defaultNode ? defaultNode.id : nodesResponse.data[0].id;
-      
-      console.log('使用存储节点:', nodeId);
-      
-      // 上传进度回调（可选：显示上传进度）
-      const onProgress = (progress: number, speed: number) => {
-        console.log(`上传进度: ${progress.toFixed(1)}%`, speed > 0 ? `速度: ${(speed / 1024 / 1024).toFixed(2)} MB/s` : '');
+
+      const [r0, r1] = range;
+      const span = Math.max(0, r1 - r0);
+      const mapToOverall = (filePct: number) => {
+        const p = Math.min(100, Math.max(0, filePct));
+        return r0 + (p / 100) * span;
       };
-      
-      // 上传到COS
+
+      const onProgress = (progress: number) => {
+        onOverallPercent?.(mapToOverall(progress));
+      };
+
       const uploadResult = await (cosService as any).uploadFile(
         file,
         fullPath,
-        onProgress, // 进度回调函数
-        false, // useChunkUpload
-        false, // useAccelerate
-        null, // resumeData
-        null, // bucketName (使用默认值)
-        nodeId // 传递节点ID
+        onProgress,
+        false,
+        false,
+        null,
+        null,
+        nodeId,
       );
-      
+
+      onOverallPercent?.(r1);
+
       if (uploadResult && uploadResult.url) {
-        console.log('图片上传成功，URL:', uploadResult.url);
         return uploadResult.url;
-      } else {
-        throw new Error('上传成功但未返回URL');
       }
+      throw new Error('上传成功但未返回URL');
     } catch (error: any) {
       console.error('上传图片到COS失败:', error);
       throw new Error(error.message || '上传图片失败');
@@ -1247,6 +1404,39 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
       return;
     }
 
+    setGenerateApiError(null);
+
+    const durationVal = Number(values.duration);
+    const durationForSubmit = Number.isFinite(durationVal) && durationVal > 0 ? durationVal : 8;
+    const needTokens = getEstimatedTokenCost(durationForSubmit);
+    const authToken = localStorage.getItem('token');
+    if (
+      authToken &&
+      !tokenBalanceLoading &&
+      needTokens != null &&
+      tokenBalance !== null &&
+      tokenBalance < needTokens
+    ) {
+      const insufficientMsg = intl.formatMessage({
+        id: 'create.i2v.balance.insufficient',
+        defaultMessage: '余额不足',
+      });
+      const detailMsg = intl.formatMessage(
+        {
+          id: 'create.i2v.balance.insufficientDetail',
+          defaultMessage: '当前余额 {balance} Token，本次约需 {need} Token。',
+        },
+        { balance: formatTokenAmount(tokenBalance), need: formatTokenAmount(needTokens) },
+      );
+      setGenerateApiError({
+        message: insufficientMsg,
+        description: detailMsg,
+        showRecharge: true,
+      });
+      isUserSubmitRef.current = false;
+      return;
+    }
+
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }
@@ -1255,30 +1445,32 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
     abortControllerRef.current = abortController;
 
     setLoading(true);
-    setGeneratedVideo(null); 
+    setGeneratedVideo(null);
+    setCosUploadProgress(0);
 
     try {
-      // 显示上传提示
-      const uploadingMessage = message.loading(
-        intl.formatMessage({ 
-          id: 'create.i2v.uploading.image', 
-          defaultMessage: '正在上传图片到云端...' 
-        }),
-        0 // 0表示不会自动关闭
-      );
-      
       try {
-        // 上传图片到COS
-        const imageUrl = await uploadImageToServer(originalImageFile);
+        const hasEndFrame = isSeedance2Model(selectedModel) && !!endFrameImageFile;
+        const firstRange: [number, number] = hasEndFrame ? [0, 50] : [0, 100];
+        const imageUrl = await uploadImageToServer(
+          originalImageFile,
+          (p) => setCosUploadProgress(p),
+          firstRange,
+        );
+        await registerMaterialAfterUpload(imageUrl, originalImageFile);
         let imageUrls: string[] = [imageUrl];
-        if (isSeedance2Model(selectedModel) && endFrameImageFile) {
-          const endUrl = await uploadImageToServer(endFrameImageFile);
+        if (hasEndFrame && endFrameImageFile) {
+          const endUrl = await uploadImageToServer(
+            endFrameImageFile,
+            (p) => setCosUploadProgress(p),
+            [50, 100],
+          );
+          await registerMaterialAfterUpload(endUrl, endFrameImageFile);
           imageUrls.push(endUrl);
         }
-        
-        // 关闭上传提示
-        uploadingMessage();
-        
+
+        setCosUploadProgress(null);
+
         message.success(
           intl.formatMessage({ 
             id: 'create.i2v.upload.success', 
@@ -1361,6 +1553,8 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
         
         // 如果任务在队列中，开始轮询
         if (status === 'queued' && result.id) {
+          setGenerateApiError(null);
+          void fetchTokenBalance();
           message.success(intl.formatMessage({ 
             id: 'create.video.generate.queued', 
             defaultMessage: '视频生成任务已提交，正在排队中...' 
@@ -1384,6 +1578,8 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
           
           setGeneratedVideo(videoResult);
           setLoading(false);
+          setGenerateApiError(null);
+          void fetchTokenBalance();
           message.success(intl.formatMessage({ 
             id: 'create.video.generate.success', 
             defaultMessage: '视频生成成功' 
@@ -1396,10 +1592,11 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
             id: 'create.video.generate.failed', 
             defaultMessage: '视频生成失败' 
           });
-          message.error(errorMsg);
+          setApiError(errorMsg);
         }
         // 其他状态（如 processing）
         else {
+          setGenerateApiError(null);
           message.info(intl.formatMessage({ 
             id: 'create.video.generate.processing', 
             defaultMessage: '视频生成任务已提交，正在处理中...' 
@@ -1423,18 +1620,16 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
         }));
       }
       } catch (uploadError: any) {
-        // 关闭上传提示
-        uploadingMessage();
-        
-        // 上传图片失败
+        setCosUploadProgress(null);
+        // 上传或后续步骤失败（内层 try 含生成请求）
         console.error('上传图片失败:', uploadError);
-        message.error(
+        setApiError(
           uploadError.message || intl.formatMessage({ 
             id: 'create.i2v.upload.failed', 
             defaultMessage: '图片上传失败，请重试' 
-          })
+          }),
         );
-        throw uploadError; // 继续抛出错误，让外层catch处理
+        return;
       }
     } catch (error: any) {
       if (error.name === 'AbortError' || 
@@ -1451,8 +1646,9 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
                             id: 'create.video.generate.failed', 
                             defaultMessage: '视频生成失败，请重试' 
                           });
-      message.error(errorMessage);
+      setApiError(errorMessage);
     } finally {
+      setCosUploadProgress(null);
       if (!abortController.signal.aborted) {
         setLoading(false);
         abortControllerRef.current = null;
@@ -1943,7 +2139,84 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
                 {/* 提交按钮 */}
                 <Form.Item style={{ marginTop: 16 }}>
                   <div>
-                    {loading ? (
+                    {generateApiError ? (
+                      <Alert
+                        type="error"
+                        showIcon
+                        closable
+                        message={generateApiError.message}
+                        description={
+                          (generateApiError.description || generateApiError.showRecharge) ? (
+                            <div>
+                              {generateApiError.description ? (
+                                <div style={{ marginBottom: generateApiError.showRecharge ? 10 : 0 }}>
+                                  {generateApiError.description}
+                                </div>
+                              ) : null}
+                              {generateApiError.showRecharge ? (
+                                <Button type="primary" size="small" onClick={() => navigate('/recharge')}>
+                                  <FormattedMessage
+                                    id="create.i2v.balance.recharge"
+                                    defaultMessage="去充值"
+                                  />
+                                </Button>
+                              ) : null}
+                            </div>
+                          ) : undefined
+                        }
+                        onClose={() => setGenerateApiError(null)}
+                        style={{ marginBottom: 12 }}
+                      />
+                    ) : null}
+                    {loading && cosUploadProgress != null ? (
+                      <Button
+                        type="primary"
+                        block
+                        size="large"
+                        disabled
+                        style={{
+                          height: 48,
+                          fontSize: 16,
+                          borderRadius: 24,
+                          position: 'relative',
+                          overflow: 'hidden',
+                          border: 'none',
+                        }}
+                      >
+                        <div
+                          aria-hidden
+                          style={{
+                            position: 'absolute',
+                            left: 0,
+                            top: 0,
+                            bottom: 0,
+                            width: `${Math.min(100, Math.max(0, cosUploadProgress))}%`,
+                            background: 'rgba(255,255,255,0.28)',
+                            transition: 'width 0.18s ease-out',
+                            borderRadius: 'inherit',
+                            pointerEvents: 'none',
+                          }}
+                        />
+                        <span
+                          style={{
+                            position: 'relative',
+                            zIndex: 1,
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: 8,
+                            fontWeight: 600,
+                          }}
+                        >
+                          <CloudUploadOutlined />
+                          <FormattedMessage
+                            id="create.i2v.uploading.inline"
+                            defaultMessage="上传图片 {percent}%"
+                            values={{ percent: Math.round(cosUploadProgress) }}
+                          />
+                        </span>
+                      </Button>
+                    ) : loading ? (
                       <Button 
                         type="default" 
                         danger
@@ -1972,25 +2245,60 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
                         <FormattedMessage id="create.generate.i2v" defaultMessage="开始生成视频" />
                       </Button>
                     )}
-                    <Form.Item shouldUpdate={(prevValues, currentValues) => prevValues.duration !== currentValues.duration} noStyle>
-                      {({ getFieldValue }) => {
-                        const duration = getFieldValue('duration') || 8;
-                        const estimatedPrice = selectedModel && selectedModel.tokenCost !== null && selectedModel.tokenCost !== undefined
-                          ? calculateEstimatedPrice(duration)
-                          : null;
-                        
-                        return estimatedPrice ? (
-                          <div style={{ textAlign: 'center', marginTop: 8 }}>
-                            <Text type="secondary" style={{ fontSize: 12 }}>
-                              {intl.formatMessage({ 
-                                id: 'create.estimated.price', 
-                                defaultMessage: '预估: {price}' 
-                              }, { price: estimatedPrice })}
+                    <div style={{ textAlign: 'center', marginTop: 8 }}>
+                      <div style={{ marginBottom: 4 }}>
+                        {!authTokenForBalanceRow ? (
+                          <Text type="secondary" style={{ fontSize: 12 }}>
+                            <FormattedMessage
+                              id="create.i2v.balance.loginHint"
+                              defaultMessage="登录后可查看 Token 余额"
+                            />
+                          </Text>
+                        ) : tokenBalanceLoading && tokenBalance === null ? (
+                          <Spin size="small" />
+                        ) : (
+                          <Text type="secondary" style={{ fontSize: 12 }}>
+                            <ThunderboltFilled style={{ color: '#fbbf24', marginRight: 6 }} />
+                            <FormattedMessage id="create.i2v.balance.label" defaultMessage="Token 余额" />
+                            {': '}
+                            <Text strong style={{ color: balanceTooLowForRow ? '#ff4d4f' : undefined }}>
+                              {tokenBalance !== null ? formatTokenAmount(tokenBalance) : '—'}
                             </Text>
-                          </div>
-                        ) : null;
-                      }}
-                    </Form.Item>
+                          </Text>
+                        )}
+                      </div>
+                      <Form.Item
+                        shouldUpdate={(prevValues, currentValues) =>
+                          prevValues.duration !== currentValues.duration ||
+                          prevValues.modelId !== currentValues.modelId
+                        }
+                        noStyle
+                      >
+                        {({ getFieldValue }) => {
+                          const rawDur = getFieldValue('duration');
+                          const d =
+                            rawDur != null && rawDur !== '' ? Number(rawDur) : 8;
+                          const durationSafe = Number.isFinite(d) && d > 0 ? d : 8;
+                          const estimatedPrice =
+                            selectedModel &&
+                            selectedModel.tokenCost !== null &&
+                            selectedModel.tokenCost !== undefined
+                              ? calculateEstimatedPrice(durationSafe)
+                              : null;
+                          return estimatedPrice ? (
+                            <Text type="secondary" style={{ fontSize: 12 }}>
+                              {intl.formatMessage(
+                                {
+                                  id: 'create.estimated.price',
+                                  defaultMessage: '预估: {price}',
+                                },
+                                { price: estimatedPrice },
+                              )}
+                            </Text>
+                          ) : null;
+                        }}
+                      </Form.Item>
+                    </div>
                   </div>
                 </Form.Item>
               </Form>
@@ -2001,6 +2309,14 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
           {/* --- 右侧：结果展示区 + 其下方生成记录 --- */}
           <Col xs={24} lg={15}>
             <Space direction="vertical" size="large" style={{ width: '100%' }}>
+            <MaterialLibrarySection
+              compactTop
+              refreshTrigger={materialLibraryTick}
+              onPickForRemix={applyMaterialFromUrlAsFirstFrame}
+              onEnsureFolderIdChange={(id) => {
+                materialEnsureFolderIdRef.current = id;
+              }}
+            />
             <ResultArea>
               {loading ? (
                 <Space direction="vertical" align="center">
