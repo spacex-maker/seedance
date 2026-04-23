@@ -146,17 +146,53 @@ export interface ImageToVideoProps {
   seedancePage?: boolean;
 }
 
-/** 接口可能返回 { success, data: Model[] }、{ code, data: Model[] } 或 data 为 { records: Model[] } */
+/** 模型列表接口在不同网关/分页场景下有多种包装，做宽松提取避免误判“加载失败”。 */
 function extractEnabledModelsList(body: unknown): Model[] {
   if (body == null || typeof body !== 'object') return [];
-  const p = body as Record<string, unknown>;
-  const inner = p.data;
-  if (Array.isArray(inner)) return inner as Model[];
-  if (inner && typeof inner === 'object' && Array.isArray((inner as { records?: unknown }).records)) {
-    return (inner as { records: Model[] }).records;
+  const queue: unknown[] = [body];
+  const seen = new Set<unknown>();
+  const keys: Array<'data' | 'records' | 'list' | 'items' | 'rows' | 'content' | 'result'> = [
+    'data',
+    'records',
+    'list',
+    'items',
+    'rows',
+    'content',
+    'result',
+  ];
+
+  while (queue.length > 0) {
+    const current = queue.shift();
+    if (current == null || seen.has(current)) continue;
+    seen.add(current);
+
+    if (Array.isArray(current)) {
+      if (current.length === 0) continue;
+      const first = current[0] as Partial<Model> | undefined;
+      if (first && typeof first === 'object' && ('id' in first || 'modelName' in first || 'modelCode' in first)) {
+        return current as Model[];
+      }
+      continue;
+    }
+
+    if (typeof current !== 'object') continue;
+    const obj = current as Record<string, unknown>;
+    for (const key of keys) {
+      if (obj[key] != null) queue.push(obj[key]);
+    }
   }
-  if (Array.isArray(p.records)) return p.records as Model[];
   return [];
+}
+
+function isModelListResponseFailed(body: unknown): boolean {
+  if (body == null || typeof body !== 'object') return false;
+  const obj = body as Record<string, unknown>;
+  if (typeof obj.success === 'boolean') return obj.success === false;
+  if (obj.code != null) {
+    const code = String(obj.code);
+    return !['0', '200', 'SUCCESS'].includes(code.toUpperCase());
+  }
+  return false;
 }
 
 const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => {
@@ -279,60 +315,53 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
         const response = await instance.get('/productx/sa-ai-models/enabled/by-type', {
           params: { modelType: 'i2v' },
         });
-        const listFromApi = extractEnabledModelsList(response.data);
-        if (listFromApi.length > 0) {
-          let list = listFromApi;
-          if (seedancePage) {
-            list = list.filter((m: Model) => (m.modelCode || '').toLowerCase().includes('seedance'));
-          }
+        const body = response.data;
+        const listFromApi = extractEnabledModelsList(body);
+        if (isModelListResponseFailed(body) && listFromApi.length === 0) {
+          throw new Error('model list response failed');
+        }
+
+        let list = listFromApi;
+        if (seedancePage) {
+          list = list.filter((m: Model) => (m.modelCode || '').toLowerCase().includes('seedance'));
+        }
+
+        if (list.length > 0) {
+          message.destroy('model-list-load-failed');
+          message.destroy('model-list-empty');
           setModels(list);
           const firstModel = list[0];
-          if (firstModel) {
-            setSelectedModel(firstModel);
-            form.setFieldsValue({ modelId: firstModel.id });
-            updateFormByModelRef.current(firstModel);
-          }
-          if (seedancePage && list.length === 0) {
-            message.warning(
-              intl.formatMessage({
-                id: 'create.seedance.noModel',
-                defaultMessage: '暂无可用的 Seedance 模型，请先在后台配置',
-              })
-            );
-          } else if (!firstModel && !seedancePage) {
-            message.warning(
-              intl.formatMessage({
-                id: 'create.model.loadFailed',
-                defaultMessage: '加载模型列表失败',
-              })
-            );
-          }
+          setSelectedModel(firstModel);
+          form.setFieldsValue({ modelId: firstModel.id });
+          updateFormByModelRef.current(firstModel);
         } else {
           setModels([]);
           setSelectedModel(null);
           form.setFieldsValue({ modelId: null });
-          message.warning(
-            intl.formatMessage(
+          message.warning({
+            key: 'model-list-empty',
+            content: intl.formatMessage(
               seedancePage
                 ? {
                     id: 'create.seedance.noModel',
                     defaultMessage: '暂无可用的 Seedance 模型，请先在后台配置',
                   }
                 : {
-                    id: 'create.model.loadFailed',
-                    defaultMessage: '加载模型列表失败',
+                    id: 'create.model.noModel',
+                    defaultMessage: '暂无可用的模型',
                   }
-            )
-          );
+            ),
+          });
         }
       } catch (error: unknown) {
         console.error('获取模型列表失败:', error);
-        message.error(
-          intl.formatMessage({
+        message.error({
+          key: 'model-list-load-failed',
+          content: intl.formatMessage({
             id: 'create.model.loadFailed',
             defaultMessage: '加载模型列表失败',
-          })
-        );
+          }),
+        });
       } finally {
         setModelsLoading(false);
       }
