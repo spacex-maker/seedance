@@ -309,12 +309,14 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
   }, []);
 
   useEffect(() => {
+    let active = true;
     const fetchModels = async () => {
       setModelsLoading(true);
       try {
         const response = await instance.get('/productx/sa-ai-models/enabled/by-type', {
           params: { modelType: 'i2v' },
         });
+        if (!active) return;
         const body = response.data;
         const listFromApi = extractEnabledModelsList(body);
         if (isModelListResponseFailed(body) && listFromApi.length === 0) {
@@ -329,12 +331,14 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
         if (list.length > 0) {
           message.destroy('model-list-load-failed');
           message.destroy('model-list-empty');
+          if (!active) return;
           setModels(list);
           const firstModel = list[0];
           setSelectedModel(firstModel);
           form.setFieldsValue({ modelId: firstModel.id });
           updateFormByModelRef.current(firstModel);
         } else {
+          if (!active) return;
           setModels([]);
           setSelectedModel(null);
           form.setFieldsValue({ modelId: null });
@@ -354,6 +358,7 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
           });
         }
       } catch (error: unknown) {
+        if (!active) return;
         console.error('获取模型列表失败:', error);
         message.error({
           key: 'model-list-load-failed',
@@ -363,7 +368,9 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
           }),
         });
       } finally {
-        setModelsLoading(false);
+        if (active) {
+          setModelsLoading(false);
+        }
       }
     };
 
@@ -372,6 +379,7 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
     fetchPendingTasks();
 
     return () => {
+      active = false;
       if (abortControllerRef.current) {
         abortControllerRef.current.abort();
         abortControllerRef.current = null;
