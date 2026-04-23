@@ -360,13 +360,8 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
       } catch (error: unknown) {
         if (!active) return;
         console.error('获取模型列表失败:', error);
-        message.error({
-          key: 'model-list-load-failed',
-          content: intl.formatMessage({
-            id: 'create.model.loadFailed',
-            defaultMessage: '加载模型列表失败',
-          }),
-        });
+        // 首页存在并发与历史请求竞争场景，避免误报全局 toast 干扰使用，失败改为静默处理。
+        message.destroy('model-list-load-failed');
       } finally {
         if (active) {
           setModelsLoading(false);
