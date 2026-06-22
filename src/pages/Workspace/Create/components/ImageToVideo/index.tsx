@@ -78,6 +78,8 @@ import DoubaoSeedance20Params, {
   DOUBAO_SEEDANCE_20_I2V_FIRST_INPUT_ID,
   DOUBAO_SEEDANCE_20_I2V_END_INPUT_ID,
 } from './generationParams/DoubaoSeedance20Params';
+import { useInsufficientBalanceGuard } from '../shared/useInsufficientBalanceGuard';
+import InsufficientBalanceModal from '../shared/InsufficientBalanceModal';
 
 const { Title, Text } = Typography;
 const { TextArea } = Input;
@@ -195,9 +197,26 @@ function isModelListResponseFailed(body: unknown): boolean {
   return false;
 }
 
+function isModelListNoiseMessage(raw: unknown): boolean {
+  if (!raw) return false;
+  const msg = String(raw).trim().toLowerCase();
+  return (
+    msg.includes('failed to load model list') ||
+    msg.includes('load model list failed') ||
+    msg.includes('加载模型列表失败')
+  );
+}
+
 const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => {
   const intl = useIntl();
   const navigate = useNavigate();
+  const {
+    insufficientBalanceOpen,
+    insufficientBalanceRequired,
+    insufficientBalanceModalBalance,
+    closeInsufficientBalanceModal,
+    tryShowFromApiError,
+  } = useInsufficientBalanceGuard();
   const [form] = Form.useForm();
   const watchedDuration = Form.useWatch('duration', form);
   const [loading, setLoading] = useState(false);
@@ -218,6 +237,8 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
   const [modelPickerVisible, setModelPickerVisible] = useState(false);
 
   const setApiError = (message: string, options?: { forceRecharge?: boolean; description?: string }) => {
+    // 这类文案来自模型配置接口，不应出现在“生成错误”区域（常见于恢复轮询时后端串错 message）。
+    if (isModelListNoiseMessage(message)) return;
     setGenerateApiError({
       message,
       description: options?.description,
@@ -310,6 +331,9 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
 
   useEffect(() => {
     let active = true;
+    // 强制清理历史残留的模型提示，避免顶部 message“钉住”。
+    message.destroy('model-list-load-failed');
+    message.destroy('model-list-empty');
     const fetchModels = async () => {
       setModelsLoading(true);
       try {
@@ -342,26 +366,15 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
           setModels([]);
           setSelectedModel(null);
           form.setFieldsValue({ modelId: null });
-          message.warning({
-            key: 'model-list-empty',
-            content: intl.formatMessage(
-              seedancePage
-                ? {
-                    id: 'create.seedance.noModel',
-                    defaultMessage: '暂无可用的 Seedance 模型，请先在后台配置',
-                  }
-                : {
-                    id: 'create.model.noModel',
-                    defaultMessage: '暂无可用的模型',
-                  }
-            ),
-          });
+          // 空列表只做页面空态，不再弹全局 toast。
+          message.destroy('model-list-empty');
         }
       } catch (error: unknown) {
         if (!active) return;
         console.error('获取模型列表失败:', error);
         // 首页存在并发与历史请求竞争场景，避免误报全局 toast 干扰使用，失败改为静默处理。
         message.destroy('model-list-load-failed');
+        message.destroy('model-list-empty');
       } finally {
         if (active) {
           setModelsLoading(false);
@@ -375,6 +388,8 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
 
     return () => {
       active = false;
+      message.destroy('model-list-load-failed');
+      message.destroy('model-list-empty');
       if (abortControllerRef.current) {
         abortControllerRef.current.abort();
         abortControllerRef.current = null;
@@ -1158,6 +1173,10 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
       console.error('查询任务状态失败:', error);
       const serverMsg = error.response?.data?.message;
       if (serverMsg) {
+        if (await tryShowFromApiError(serverMsg, error)) {
+          setLoading(false);
+          return;
+        }
         setApiError(serverMsg);
         setLoading(false);
       }
@@ -1678,7 +1697,9 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
                             id: 'create.video.generate.failed', 
                             defaultMessage: '视频生成失败，请重试' 
                           });
-      setApiError(errorMessage);
+      if (!(await tryShowFromApiError(errorMessage, error))) {
+        setApiError(errorMessage);
+      }
     } finally {
       setCosUploadProgress(null);
       if (!abortController.signal.aborted) {
@@ -2560,6 +2581,13 @@ const ImageToVideo: React.FC<ImageToVideoProps> = ({ seedancePage = false }) => 
         open={modelDetailModalVisible}
         onClose={handleCloseModelDetail}
         model={selectedModelForDetail}
+      />
+
+      <InsufficientBalanceModal
+        open={insufficientBalanceOpen}
+        onCancel={closeInsufficientBalanceModal}
+        requiredTokens={insufficientBalanceRequired}
+        tokenBalance={insufficientBalanceModalBalance}
       />
     </>
   );

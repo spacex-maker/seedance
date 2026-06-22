@@ -78,17 +78,22 @@ const getSocialColor = (type, property) => {
 };
 
 export const RightSectionWrapper = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  max-width: 420px;
+  padding: 2rem;
+  background: transparent;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
   animation: ${slideInFromRight} 0.8s ease-out;
   
   @media (max-width: 768px) {
-    width: 100%;
-    max-width: 100%;
+    padding: 1rem;
+    justify-content: flex-start;
+    padding-top: 4rem;
   }
 `;
 
@@ -96,16 +101,13 @@ export const LoginBox = styled.div`
   width: 100%;
   max-width: 420px;
   padding: 2rem;
-  background: ${props => props.theme.mode === 'dark' 
-    ? 'transparent' 
-    : '#ffffff'};
-  border-radius: 1rem;
+  background: transparent;
+  border-radius: 0;
   box-shadow: none;
   animation: ${fadeInScale} 0.8s ease-out 0.5s both;
 
   @media (max-width: 768px) {
     padding: 1.5rem;
-    box-shadow: none;
   }
 `;
 
@@ -423,16 +425,41 @@ export const ErrorText = styled.div`
   margin-top: 0.5rem;
 `;
 
+export const FormOptionsRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+`;
+
+export const RememberLabel = styled.label`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--ant-color-text-secondary);
+  cursor: pointer;
+  user-select: none;
+
+  input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--ant-color-primary);
+  }
+`;
+
 export const ForgotPasswordLink = styled(Link)`
-  text-align: right;
   font-size: 0.875rem;
   color: var(--ant-color-text-secondary);
   text-decoration: none;
-  margin-top: 0.5rem;
-  display: block;
   padding: 0.25rem 0;
   transition: color 0.3s ease;
-  
+  white-space: nowrap;
+
   &:hover {
     color: var(--ant-color-primary);
   }

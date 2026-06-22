@@ -25,17 +25,22 @@ const fadeScale = keyframes`
 `;
 
 export const RightSection = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  max-width: 420px;
+  padding: 2rem;
+  background: transparent;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
   animation: ${slideInFromRight} 0.8s ease-out forwards;
   
   @media (max-width: 768px) {
-    width: 100%;
-    max-width: 100%;
+    padding: 1rem;
+    justify-content: flex-start;
+    padding-top: 4rem;
   }
 `;
 
@@ -43,18 +48,16 @@ export const LoginBox = styled.div`
   width: 100%;
   max-width: 420px;
   padding: 2rem;
-  background: ${props => props.theme.mode === 'dark' 
-    ? 'transparent' 
-    : '#ffffff'};
-  border-radius: 1rem;
+  background: transparent;
+  border-radius: 0;
   box-shadow: none;
+  border: none;
   opacity: 0;
   animation: ${slideUpFade} 0.8s ease-out forwards;
   animation-delay: 0.3s;
 
   @media (max-width: 768px) {
     padding: 1.5rem;
-    box-shadow: none;
   }
 `;
 

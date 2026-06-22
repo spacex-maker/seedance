@@ -10,11 +10,13 @@ import { initGA4, sendPageView } from './utils/analytics';
 import SeedanceVideoPage from './pages/SeedanceVideoPage';
 import brandConfig from './config/brand';
 import ProfilePage from './pages/Profile';
+import VerificationPage from './pages/Verification';
 import SettingsPage from './pages/Settings';
 import PrivacyPreferencesPage from './pages/PrivacyPreferences';
 import BillingPage from './pages/Billing';
 import OrdersPage from './pages/Orders';
 import WorksPage from './pages/Works';
+import WorkSharePage from './pages/Works/WorkSharePage';
 import NotificationsPage from './pages/Notifications';
 import InvitePage from './pages/Invite';
 import FeedbackPage from './pages/Feedback';
@@ -27,6 +29,7 @@ import RechargeAgreementPage from './pages/RechargeAgreement';
 import LoginPage from './pages/Login';
 import SignupPage from './pages/Signup';
 import GoogleCallback from './pages/GoogleCallback';
+import IpBlockedPage from './pages/IpBlocked';
 import zhCN from 'antd/locale/zh_CN';
 import enUS from 'antd/locale/en_US';
 import jaJP from 'antd/locale/ja_JP';
@@ -277,11 +280,17 @@ export default function App() {
               {/* 认证页面 */}
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
+              <Route path="/blocked" element={<IpBlockedPage />} />
               <Route path="/auth/google/callback" element={<GoogleCallback />} />
               {/* 账户设置 */}
               <Route path="/profile" element={
                 <PrivateRoute>
                   <ProfilePage />
+                </PrivateRoute>
+              } />
+              <Route path="/verification/*" element={
+                <PrivateRoute>
+                  <VerificationPage />
                 </PrivateRoute>
               } />
               <Route path="/settings" element={
@@ -317,6 +326,7 @@ export default function App() {
               } />
               <Route path="/recharge-agreement" element={<RechargeAgreementPage />} />
               {/* 工作台 */}
+              <Route path="/works/s/:shareCode" element={<WorkSharePage />} />
               <Route path="/works" element={
                 <PrivateRoute>
                   <WorksPage />

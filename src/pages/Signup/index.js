@@ -7,9 +7,10 @@ import { message } from "antd";
 import { auth } from "../../api/auth";
 import { base } from "../../api/base";
 import axios from '../../api/axios';
-import SimpleHeader from 'components/headers/simple';
-import FooterSection from 'pages/Home/components/FooterSection';
+import brandConfig from '../../config/brand';
+import { TopControls } from './components/TopControls';
 import { RightSection } from './components/RightSection';
+import { PhilosophyQuote, PoweredBy } from './components/Footer';
 import { PageContainer } from './styles';
 import { useNavigate } from 'react-router-dom';
 
@@ -26,6 +27,7 @@ const SignupPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const theme = useTheme();
+  const [isDark, setIsDark] = useState(theme.mode === 'dark');
   const { locale, changeLocale } = useLocale();
   const intl = useIntl();
   const [languages, setLanguages] = useState([]);
@@ -106,6 +108,12 @@ const SignupPage = () => {
 
     fetchCountries();
   }, [locale]);
+
+  const toggleTheme = () => {
+    const newIsDark = !isDark;
+    setIsDark(newIsDark);
+    theme.setTheme(newIsDark);
+  };
 
   const startCountdown = () => {
     setCountdown(300); // 5分钟 = 300秒
@@ -217,8 +225,14 @@ const SignupPage = () => {
       <SEO {...SEOConfigs.signup}>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       </SEO>
-      <SimpleHeader />
       <PageContainer>
+        <TopControls
+          isDark={isDark}
+          toggleTheme={toggleTheme}
+          locale={locale}
+          languages={languages}
+          changeLocale={changeLocale}
+        />
         <RightSection 
           username={username}
           setUsername={setUsername}
@@ -248,8 +262,13 @@ const SignupPage = () => {
           handleSendCode={handleSendCode}
           handleSubmit={handleSubmit}
         />
+        <PhilosophyQuote>
+          {intl.formatMessage({ id: 'common.philosophy' })}
+        </PhilosophyQuote>
+        <PoweredBy>
+          © {brandConfig.copyright.year} {brandConfig.copyright.company}. All rights reserved.
+        </PoweredBy>
       </PageContainer>
-      <FooterSection />
     </>
   );
 };

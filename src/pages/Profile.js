@@ -430,7 +430,7 @@ const ProfileContent = () => {
   const [loadingFollowers, setLoadingFollowers] = useState(false);
 
   // 是否已实名认证：后端定义 2 为已通过
-  const isVerified = realnameInfo?.realnameStatus === 2;
+  const isVerified = realnameInfo?.kycStatus === 2;
 
   useEffect(() => {
     const storedUserInfo = localStorage.getItem('userInfo');
